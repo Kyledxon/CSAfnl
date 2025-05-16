@@ -17,7 +17,7 @@ import javax.swing.JRadioButtonMenuItem;
 public class Game {
 	
 	JFrame frame;
-	private int width 	= 00;
+	private int width 	= 800;
 	private int height 	= 800;
 	
 	public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class Game {
 	}
 	
 	public Game() {
-		frame = new JFrame("Los Pollos Hermanos");
+	frame = new JFrame("Los Pollos Hermanos");
 		setup();
 		
 	}
