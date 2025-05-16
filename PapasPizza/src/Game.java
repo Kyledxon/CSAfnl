@@ -118,5 +118,6 @@ public class Game {
 		});
  		menu.add(menuItem);
 		frame.setJMenuBar(menuBar);
+		//hi
 	}
 }
