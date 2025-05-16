@@ -1,5 +1,8 @@
+import java.awt.Image;
 
-public class toppings {
+import javax.swing.ImageIcon;
+
+public abstract class toppings {
 	private String name;
 	
 	public toppings(String nm) {
@@ -9,4 +12,5 @@ public class toppings {
 	public String getName() {
 		return name;
 	}
+	
 }

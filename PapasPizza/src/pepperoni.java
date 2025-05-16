@@ -5,6 +5,5 @@ public class pepperoni extends toppings{
 		super(nm);
 		// TODO Auto-generated constructor stub
 	}
-	//s
 
 }
