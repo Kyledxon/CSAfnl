@@ -27,7 +27,7 @@ public class Game {
 	}
 	
 	public Game() {
-		frame = new JFrame("Chess");
+		frame = new JFrame("Los Pollos Hermanos");
 		setup();
 		
 	}
