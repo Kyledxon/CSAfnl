@@ -1,8 +1,11 @@
 import java.awt.Cursor;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
@@ -14,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
-public class Game {
+public class Game extends JPanel implements MouseListener, ActionListener{
 	
 	JFrame frame;
 	private int width 	= 800;
@@ -27,10 +30,11 @@ public class Game {
 	}
 	
 	public Game() {
-	frame = new JFrame("Los Pollos Hermanos");
+		frame = new JFrame("Los Pollos Hermanos");
 		setup();
 		
 	}
+	
 	
 	public void setup() {
 		
@@ -119,5 +123,41 @@ public class Game {
 		});
  		menu.add(menuItem);
 		frame.setJMenuBar(menuBar);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
