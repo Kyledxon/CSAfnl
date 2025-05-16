@@ -67,6 +67,7 @@ public class Game {
 		JMenuBar menuBar;
 		JMenu menu;
 		JMenuItem menuItem;
+		
 
 		//Create the menu bar.
 		menuBar = new JMenuBar();
@@ -118,6 +119,5 @@ public class Game {
 		});
  		menu.add(menuItem);
 		frame.setJMenuBar(menuBar);
-		//hi
 	}
 }
