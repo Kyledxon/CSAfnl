@@ -1,3 +1,4 @@
+ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -28,12 +29,26 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 		new Game();
 
 	}
-	
+
 	public Game() {
 		frame = new JFrame("Los Pollos Hermanos");
+		frame.add(this); // Add the Game panel
 		setup();
-		
 	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g); // Clear the panel
+
+		// Example: Draw a red rectangle
+		g.setColor(Color.RED);
+		g.fillRect(100, 100, 100, 100);
+
+		// Example: Draw an image
+		ImageIcon icon = new ImageIcon("images/your_image.png");
+		g.drawImage(icon.getImage(), 200, 200, this);
+	}
+	
 	
 	
 	public void setup() {
@@ -57,13 +72,13 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 	public void setupBoard() {
 		JPanel jp = new JPanel();
 
-		GridLayout g = new GridLayout(8,8);
+		GridLayout g = new GridLayout(8,8);	
 		jp.setLayout(g);	
 
 
 
 		
-		frame.add(jp);
+		frame.add(this);
 	}
 	
 	public void addMenus() {
@@ -134,6 +149,7 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		repaint();
 		
 	}
 
