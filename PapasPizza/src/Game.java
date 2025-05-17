@@ -1,4 +1,4 @@
- import java.awt.Color;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -41,11 +41,11 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 		super.paintComponent(g); // Clear the panel
 
 		// Example: Draw a red rectangle
-		g.setColor(Color.RED);
-		g.fillRect(100, 100, 100, 100);
+//		g.setColor(Color.RED);
+//		g.fillRect(100, 100, 100, 100);
 
 		// Example: Draw an image
-		ImageIcon icon = new ImageIcon("images/your_image.png");
+		ImageIcon icon = new ImageIcon("file:///Users/heth/git/CSAfnl/PapasPizza/images/pollos.png");
 		g.drawImage(icon.getImage(), 200, 200, this);
 	}
 	
