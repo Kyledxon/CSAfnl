@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
-public class Game extends JFrame implements MouseListener, ActionListener{
+public class Game extends JPanel implements MouseListener, ActionListener{
 	
 	JFrame frame;
 	private int width 	= 1020;
@@ -33,37 +32,33 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 
 	public Game() {
 		frame = new JFrame("Los Pollos Hermanos");
-		//frame.add(this); // Add the Game panel
-		//this.dispose();
-	    //ToppingsFrame top = new ToppingsFrame();
-	    //top.setVisible(true);
+		frame.add(this); // Add the Game panel
 		setup();
 	}
 
-	
-	class DrawPane extends JPanel {
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g); // Clear the panel
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g); // Clear the panel
 
-			// Example: Draw an image
+		// Example: Draw an image
 
-			ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
-			g.drawImage(pollos.getImage(), 0, 0, this);
-			
-			ImageIcon saul = new ImageIcon("images/saul.png");
-			g.drawImage(saul.getImage(), 800, 600, this);
-		} 
-	}
-	
+		ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
+		g.drawImage(pollos.getImage(), 0, 0, this);
+		
+		ImageIcon saul = new ImageIcon("images/saul.png");
+		g.drawImage(saul.getImage(), 800, 600, this);
+	} 
 //please woek
+		
 
+	
+	
+	
 	public void setup() {
 		
 		
-        frame.setContentPane(new DrawPane());
-		
 		frame.setSize(width, height);
+		setupBoard();
 		addMenus();
 		
 		//add action for x button for a JFrame
@@ -77,6 +72,17 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 		
 	}
 	
+	public void setupBoard() {
+		JPanel jp = new JPanel();
+
+		GridLayout g = new GridLayout(8,8);	
+		jp.setLayout(g);	
+
+
+
+		
+		frame.add(this);
+	}
 	
 	public void addMenus() {
 		//Where the GUI is created:

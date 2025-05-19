@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class customer {
+		
 		ArrayList<String> orders;
 		private String order;
 		private String name;
@@ -28,7 +31,10 @@ public class customer {
 		public void setName(String name) {
 			this.name = name;
 		}
-
+		
+		public String getOrder() {
+			return order;
+		}
 
 		public int getxPos() {
 			return xPos;
