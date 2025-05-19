@@ -1,20 +1,22 @@
 import java.util.ArrayList;
 
 public class customer {
+		ArrayList<String> orders;
+		private String order;
 		private String name;
-		private int xPos = 500;
-		private int yPos = 500;
+		private int xPos = 800;
+		private int yPos = 600;
 		
-		public customer(int posX, int posY, String nm) {
+		public customer(int posX, int posY, String nm, String ord) {
+			orders = new ArrayList<String>();
 			posX = xPos;
 			posY = yPos;
 			name = nm;
+			order = ord;
 		}
 		
-		private static String order() {
-			ArrayList<String> orders = new ArrayList<String>();
-			
-			return "";
+		private void addOrder() {
+			orders.add(order);
 		}
 
 
