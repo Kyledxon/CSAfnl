@@ -21,9 +21,9 @@ import javax.swing.JRadioButtonMenuItem;
 public class Game extends JPanel implements MouseListener, ActionListener{
 	
 	JFrame frame;
-	private int width 	= 800;
-	private int height 	= 800;
-	
+	private int width 	= 1020;
+	private int height 	= 1040;
+
 	public static void main(String[] args) {
 		// Create an instance of the board
 		new Game();
@@ -40,14 +40,10 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g); // Clear the panel
 
-		// Example: Draw a red rectangle
-//		g.setColor(Color.RED);
-//		g.fillRect(100, 100, 100, 100);
-
 		// Example: Draw an image
-		ImageIcon icon = new ImageIcon("file:///Users/heth/git/CSAfnl/PapasPizza/images/pollos.png");
-		g.drawImage(icon.getImage(), 200, 200, this);
-	}
+		ImageIcon icon = new ImageIcon("images/8-bit pollos.png");
+		g.drawImage(icon.getImage(), 0, 0, this);
+	} 
 	
 	
 	
