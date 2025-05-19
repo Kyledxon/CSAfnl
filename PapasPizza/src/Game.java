@@ -41,9 +41,13 @@ public class Game extends JPanel implements MouseListener, ActionListener{
 		super.paintComponent(g); // Clear the panel
 
 		// Example: Draw an image
+
 		ImageIcon icon = new ImageIcon("images/8-bit pollos.png");
 		g.drawImage(icon.getImage(), 0, 0, this);
 	} 
+//please woek
+		
+
 	
 	
 	
