@@ -3,7 +3,7 @@ public class orders {
 	
 	private String toppings = "";
 	private int bakeTime;
-	private int cut1; 
+	private int cut1; // ints for cuts 1 & 2 should be coordinates to map out the cuts 
 	private int cut2;
 	
 	public orders(String toppings, int bakeTime, int cut1, int cut2) {

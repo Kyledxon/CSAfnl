@@ -142,6 +142,7 @@ public class Game extends JPanel implements MouseListener, ActionListener{
  		menu.add(menuItem);
 		frame.setJMenuBar(menuBar);
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
