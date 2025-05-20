@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -7,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +26,8 @@ import javax.swing.JRadioButtonMenuItem;
 public class Game extends JFrame implements MouseListener, ActionListener{
 	
 	JFrame frame;
+	private CardLayout cardLayout;
+    private JPanel cards; // The container for the screens
 	private int width 	= 1020;
 	private int height 	= 1040;
 
@@ -32,50 +38,78 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 	}
 
 	public Game() {
+		
 		frame = new JFrame("Los Pollos Hermanos");
-		//frame.add(this); // Add the Game panel
-		//this.dispose();
-	    //ToppingsFrame top = new ToppingsFrame();
-	    //top.setVisible(true);
-		setup();
+        cardLayout = new CardLayout();
+        cards = new JPanel(cardLayout);
+
+        // Create the panels (screens) with different sprite sets
+        DrawPane screen1 = new DrawPane("screen1");
+        DrawPane screen2 = new DrawPane("screen2");
+
+        // Add the screens to the container with names
+        cards.add(screen1, "Screen 1");
+        cards.add(screen2, "Screen 2");
+
+        // Setup the JFrame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width, height);
+        frame.add(cards);
+
+        // Add a button to switch screens
+        JPanel buttonPanel = new JPanel();
+        JButton switchButton = new JButton("Switch Screen");
+        buttonPanel.add(switchButton);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Add action listener to switch screens when button is pressed
+        switchButton.addActionListener(new ActionListener() {
+            private boolean isScreen1 = true; // Track which screen we're on
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (isScreen1) {
+                    cardLayout.show(cards, "Screen 2"); // Switch to Screen 2
+                } else {
+                    cardLayout.show(cards, "Screen 1"); // Switch to Screen 1
+                }
+                isScreen1 = !isScreen1; // Toggle the screen tracker
+            }
+        });
+
+        // Show the frame
+        frame.setVisible(true);
 	}
 
 	
-	class DrawPane extends JPanel {
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g); // Clear the panel
-
-			// Example: Draw an image
-
-			ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
-			g.drawImage(pollos.getImage(), 0, 0, this);
-			
-			ImageIcon saul = new ImageIcon("images/saul.png");
-			g.drawImage(saul.getImage(), 800, 600, this);
-		} 
-	}
 	
-//please woek
+	public class DrawPane extends JPanel {
+	    private ArrayList<Sprite> sprites;
 
-	public void setup() {
-		
-		
-        frame.setContentPane(new DrawPane());
-		
-		frame.setSize(width, height);
-		addMenus();
-		
-		//add action for x button for a JFrame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setUndecorated(true);
-		frame.setResizable(false);		
-		frame.getContentPane().setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-		
-		//show the frame
-		frame.setVisible(true);	
-		
+	    public DrawPane(String screenType) {
+	        // Set the sprites depending on the screen type
+	        sprites = new ArrayList<>();
+	        if ("screen1".equals(screenType)) {
+	        	ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
+	        	sprites.add(new Sprite(0, 0, pollos));
+	        } else if ("screen2".equals(screenType)) {
+	            
+	        }
+	        // You can add more screens and sprites based on the screenType argument
+	    }
+
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
+
+	        for (Sprite sprite : sprites) {
+	            //g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), this);
+	        }
+	    }
 	}
+
+
+	
 	
 	
 	public void addMenus() {
