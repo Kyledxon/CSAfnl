@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class customer {
-		ArrayList<String> orders;
+		
+		ArrayList<String> ordered;
 		private String order;
 		private String name;
 		private int xPos = 800;
 		private int yPos = 600;
 		
 		public customer(int posX, int posY, String nm, String ord) {
-			orders = new ArrayList<String>();
+			ordered = new ArrayList<String>();
 			posX = xPos;
 			posY = yPos;
 			name = nm;
@@ -16,7 +19,7 @@ public class customer {
 		}
 		
 		private void addOrder() {
-			orders.add(order);
+			ordered.add(order);
 		}
 
 
@@ -28,7 +31,10 @@ public class customer {
 		public void setName(String name) {
 			this.name = name;
 		}
-
+		
+		public String getOrder() {
+			return order;
+		}
 
 		public int getxPos() {
 			return xPos;
