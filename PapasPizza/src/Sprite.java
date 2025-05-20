@@ -1,11 +1,13 @@
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class Sprite {
 	private int x;
 	private int y;
-	private ImageIcon image;
+	private Image image;
 	
-	public Sprite(int x, int y, ImageIcon image) {
+	public Sprite(int x, int y, Image image) {
 		this.x = x;
 		this.y = y;
 		this.image = image;
@@ -16,7 +18,7 @@ public class Sprite {
 	public int getY() {
 		return y;
 	}
-	public ImageIcon getImage() {
+	public Image getImage() {
 		return image;
 	}
 }

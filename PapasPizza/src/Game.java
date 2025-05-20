@@ -44,11 +44,11 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         cards = new JPanel(cardLayout);
 
         // Create the panels (screens) with different sprite sets
-        DrawPane screen1 = new DrawPane("screen1");
+        DrawPane orderScreen = new DrawPane("Order Screen");
         DrawPane screen2 = new DrawPane("screen2");
 
         // Add the screens to the container with names
-        cards.add(screen1, "Screen 1");
+        cards.add(orderScreen, "Order Screen");
         cards.add(screen2, "Screen 2");
 
         // Setup the JFrame
@@ -71,7 +71,7 @@ public class Game extends JFrame implements MouseListener, ActionListener{
                 if (isScreen1) {
                     cardLayout.show(cards, "Screen 2"); // Switch to Screen 2
                 } else {
-                    cardLayout.show(cards, "Screen 1"); // Switch to Screen 1
+                    cardLayout.show(cards, "Order Screen"); // Switch to Screen 1
                 }
                 isScreen1 = !isScreen1; // Toggle the screen tracker
             }
@@ -81,35 +81,6 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         frame.setVisible(true);
 	}
 
-	
-	
-	public class DrawPane extends JPanel {
-	    private ArrayList<Sprite> sprites;
-
-	    public DrawPane(String screenType) {
-	        // Set the sprites depending on the screen type
-	        sprites = new ArrayList<>();
-	        if ("screen1".equals(screenType)) {
-	        	ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
-	        	sprites.add(new Sprite(0, 0, pollos));
-	        } else if ("screen2".equals(screenType)) {
-	            
-	        }
-	        // You can add more screens and sprites based on the screenType argument
-	    }
-
-	    @Override
-	    protected void paintComponent(Graphics g) {
-	        super.paintComponent(g);
-
-	        for (Sprite sprite : sprites) {
-	            //g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), this);
-	        }
-	    }
-	}
-
-
-	
 	
 	
 	public void addMenus() {
