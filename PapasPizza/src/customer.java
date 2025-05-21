@@ -1,23 +1,23 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class customer {
-    
-    private ArrayList<String> ordered;
-    private String order;
+
+    private List<orders> orders;
     private String name;
     private int xPos;
     private int yPos;
-    
-    public customer(int posX, int posY, String nm, String ord) {
-        this.ordered = new ArrayList<>();
+
+    public customer(int posX, int posY, String nm) {
+        this.orders = new ArrayList<>();
         this.xPos = posX;
         this.yPos = posY;
         this.name = nm;
-        this.order = ord;
-        addOrder();  // Add initial order to the list
     }
-    
-    public void ordering() {
+
+    public orders placeOrder() {
         // Simulate customer walking to counter
         while (yPos < 600) {
             yPos++;
@@ -25,50 +25,60 @@ public class customer {
         while (xPos > 800) {
             xPos--;
         }
-        
-        // At counter: maybe trigger order UI, or mark them ready to give an order
-        System.out.println(name + " has placed an order: " + order);
-    }
-    
-    private void addOrder() {
-        ordered.add(order);
+
+        // Generate random order
+        orders newOrder = generateRandomOrder();
+        orders.add(newOrder);
+
+        System.out.println(name + " placed an order: " + newOrder);
+        return newOrder;
     }
 
-    // Getters and Setters
+    private orders generateRandomOrder() {
+        List<String> possibleToppings = Arrays.asList("Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon", "Olives", "Peppers");
+        Random rand = new Random();
+
+        // Pick 2–4 random toppings
+        int toppingCount = 2 + rand.nextInt(3); // 2 to 4 toppings
+        List<String> selectedToppings = new ArrayList<>();
+        while (selectedToppings.size() < toppingCount) {
+            String topping = possibleToppings.get(rand.nextInt(possibleToppings.size()));
+            if (!selectedToppings.contains(topping)) {
+                selectedToppings.add(topping);
+            }
+        }
+
+        int bakeTime = 10 + rand.nextInt(11); // 10 to 20 seconds
+        int numCuts = (rand.nextInt(3) + 1) * 2; // 2, 4, or 6 cuts
+
+        return new orders(selectedToppings, bakeTime, numCuts);
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
-        addOrder(); // update order list
+    public List<orders> getOrders() {
+        return orders;
     }
 
     public int getxPos() {
         return xPos;
     }
 
-    public void setxPos(int xPos) {
-        this.xPos = xPos;
-    }
-
     public int getyPos() {
         return yPos;
+    }
+
+    public void setxPos(int xPos) {
+        this.xPos = xPos;
     }
 
     public void setyPos(int yPos) {
         this.yPos = yPos;
     }
 
-    public ArrayList<String> getOrderedList() {
-        return ordered;
+    public void setName(String name) {
+        this.name = name;
     }
 }
