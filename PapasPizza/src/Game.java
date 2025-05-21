@@ -79,7 +79,7 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         buttonPanel.add(button4);
         
         frame.add(buttonPanel, BorderLayout.SOUTH);
-
+        //hi
         addMenus();
         // Show the frame
         frame.setVisible(true);

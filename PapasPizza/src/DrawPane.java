@@ -33,7 +33,6 @@ public class DrawPane extends JPanel {
         	Image pizzaImage = pizza.getImage();
         	sprites.add(new Sprite(0, 0, pizzaImage, .5));
         }
-        // You can add more screens and sprites based on the screenType argument
     }
 
     @Override
