@@ -16,7 +16,7 @@ public class customer {
         this.yPos = posY;
         this.name = nm;
     }
-
+// hey 
     public orders placeOrder() {
         // Simulate customer walking to counter
         while (yPos < 600) {
