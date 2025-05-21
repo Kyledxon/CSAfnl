@@ -23,7 +23,7 @@ public class DrawPane extends JPanel {
         	
         	ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
         	Image pizzaImage = pizza.getImage();
-        	sprites.add(new Sprite(0, 0, pizzaImage, .5));
+        	sprites.add(new Sprite(200, 100, pizzaImage, .75));
         }else if ("Cooking Screen".equals(screenType)) {
         	ImageIcon table = new ImageIcon("images/baking.png");
         	Image tableImage = table.getImage();
