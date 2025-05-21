@@ -45,11 +45,11 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 
         // Create the panels (screens) with different sprite sets
         DrawPane orderScreen = new DrawPane("Order Screen");
-        DrawPane screen2 = new DrawPane("screen2");
+        DrawPane toppingsScreen = new DrawPane("Toppings Screen");
 
         // Add the screens to the container with names
         cards.add(orderScreen, "Order Screen");
-        cards.add(screen2, "Screen 2");
+        cards.add(toppingsScreen, "Toppings Screen");
 
         // Setup the JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +69,7 @@ public class Game extends JFrame implements MouseListener, ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isScreen1) {
-                    cardLayout.show(cards, "Screen 2"); // Switch to Screen 2
+                    cardLayout.show(cards, "Toppings Screen"); // Switch to Screen 2
                 } else {
                     cardLayout.show(cards, "Order Screen"); // Switch to Screen 1
                 }
