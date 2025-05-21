@@ -16,7 +16,15 @@ public class DrawPane extends JPanel {
         	Image pollosImage = pollos.getImage();
         	sprites.add(new Sprite(0, 0, pollosImage));
         } else if ("screen2".equals(screenType)) {
-            
+            //
+        	ImageIcon table = new ImageIcon("images/toppings table.png");
+        	Image tableImage = table.getImage();
+        	
+        	ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
+        	Image pizzaImage = pizza.getImage();
+        	sprites.add(new Sprite(-9, 40, tableImage));
+        	sprites.add(new Sprite(0, 0, pizzaImage));
+        	//
         }
         // You can add more screens and sprites based on the screenType argument
     }
