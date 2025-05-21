@@ -46,37 +46,41 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         // Create the panels (screens) with different sprite sets
         DrawPane orderScreen = new DrawPane("Order Screen");
         DrawPane toppingsScreen = new DrawPane("Toppings Screen");
+        DrawPane cookingScreen = new DrawPane("Cooking Screen");
+        DrawPane cuttingScreen = new DrawPane("Cutting Screen");
 
         // Add the screens to the container with names
         cards.add(orderScreen, "Order Screen");
         cards.add(toppingsScreen, "Toppings Screen");
+        cards.add(cookingScreen, "Cooking Screen");
+        cards.add(cuttingScreen, "Cutting Screen");
 
         // Setup the JFrame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setUndecorated(true);
         frame.setSize(width, height);
         frame.add(cards);
 
-        // Add a button to switch screens
+        // Add buttons to switch screens
         JPanel buttonPanel = new JPanel();
-        JButton switchButton = new JButton("Switch Screen");
-        buttonPanel.add(switchButton);
+        JButton button1 = new JButton("Order Screen");
+        JButton button2 = new JButton("Toppings Screen");
+        JButton button3 = new JButton("Cooking Screen");
+        JButton button4 = new JButton("Cutting Screen");
+        
+        button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
+        button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
+        button3.addActionListener(e -> cardLayout.show(cards, "Cooking Screen"));
+        button4.addActionListener(e -> cardLayout.show(cards, "Cutting Screen"));
+
+        // Add buttons to the panel
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        buttonPanel.add(button4);
+        
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Add action listener to switch screens when button is pressed
-        switchButton.addActionListener(new ActionListener() {
-            private boolean isScreen1 = true; // Track which screen we're on
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (isScreen1) {
-                    cardLayout.show(cards, "Toppings Screen"); // Switch to Screen 2
-                } else {
-                    cardLayout.show(cards, "Order Screen"); // Switch to Screen 1
-                }
-                isScreen1 = !isScreen1; // Toggle the screen tracker
-            }
-        });
-
+        addMenus();
         // Show the frame
         frame.setVisible(true);
 	}
