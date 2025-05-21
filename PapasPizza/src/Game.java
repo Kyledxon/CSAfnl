@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -62,14 +63,38 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 
         // Add buttons to switch screens
         JPanel buttonPanel = new JPanel();
-        JButton button1 = new JButton("Order Screen");
-        JButton button2 = new JButton("Toppings Screen");
-        JButton button3 = new JButton("Cooking Screen");
-        JButton button4 = new JButton("Cutting Screen");
-        
+       // ImageIcon button1Icon = createCircularIcon("images/pizza crust1.png");
+       // ImageIcon button2Icon = createCircularIcon("images/button2.png");
+       // ImageIcon button3Icon = createCircularIcon("images/button3.png");
+       // ImageIcon button4Icon = createCircularIcon("images/button4.png");
+
+        // Create the buttons and set the icons
+        JButton button1 = new JButton();
+        button1.setIcon(button1Icon);
+        button1.setBorderPainted(false);
+        button1.setContentAreaFilled(false);
+        button1.setFocusPainted(false);
         button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
+
+        JButton button2 = new JButton();
+        button2.setIcon(button2Icon);
+        button2.setBorderPainted(false);
+        button2.setContentAreaFilled(false);
+        button2.setFocusPainted(false);
         button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
+
+        JButton button3 = new JButton();
+        button3.setIcon(button3Icon);
+        button3.setBorderPainted(false);
+        button3.setContentAreaFilled(false);
+        button3.setFocusPainted(false);
         button3.addActionListener(e -> cardLayout.show(cards, "Cooking Screen"));
+
+        JButton button4 = new JButton();
+        button4.setIcon(button4Icon);
+        button4.setBorderPainted(false);
+        button4.setContentAreaFilled(false);
+        button4.setFocusPainted(false);
         button4.addActionListener(e -> cardLayout.show(cards, "Cutting Screen"));
 
         // Add buttons to the panel
@@ -84,7 +109,23 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         // Show the frame
         frame.setVisible(true);
 	}
+	
+	private ImageIcon createCircularIcon(String imagePath) {
+        ImageIcon icon = new ImageIcon(imagePath);
+        Image image = icon.getImage(); // Get the image from the icon
+        Image circularImage = createCircularImage(image);
+        return new ImageIcon(circularImage); // Return a new circular ImageIcon
+    }
+	
+	private Image createCircularImage(Image originalImage) {
+        int width = originalImage.getWidth(null);
+        int height = originalImage.getHeight(null);
+        int diameter = Math.min(width, height);
 
+        // Create a circular image
+        Image circularImage = originalImage.getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH);
+        return circularImage;
+    }
 	
 	
 	public void addMenus() {
