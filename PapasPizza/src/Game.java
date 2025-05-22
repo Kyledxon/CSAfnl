@@ -31,6 +31,9 @@ public class Game extends JFrame implements MouseListener, ActionListener{
     private JPanel cards; // The container for the screens
 	private int width 	= 1020;
 	private int height 	= 1040;
+	private static boolean canOrder = true;
+	
+	
 
 	public static void main(String[] args) {
 		// Create an instance of the board
@@ -186,6 +189,9 @@ public class Game extends JFrame implements MouseListener, ActionListener{
  		menu.add(menuItem);
 		frame.setJMenuBar(menuBar);
 	}
+	
+	
+	 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -19,6 +19,7 @@ public class customer {
 // hey 
     public orders placeOrder() {
         // Simulate customer walking to counter
+    	
         while (yPos < 600) {
             yPos++;
         }
