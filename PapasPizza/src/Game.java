@@ -38,6 +38,10 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private enum STATE { MENU, GAME }
 	private STATE state = STATE.MENU;
 	
+	ArrayList<customer> Customers = new ArrayList<customer>();
+	
+	
+	
 	
 
 	public static void main(String[] args) {
