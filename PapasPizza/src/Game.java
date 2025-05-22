@@ -63,10 +63,10 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 
         // Add buttons to switch screens
         JPanel buttonPanel = new JPanel();
-       // ImageIcon button1Icon = createCircularIcon("images/pizza crust1.png");
-       // ImageIcon button2Icon = createCircularIcon("images/button2.png");
-       // ImageIcon button3Icon = createCircularIcon("images/button3.png");
-       // ImageIcon button4Icon = createCircularIcon("images/button4.png");
+       ImageIcon button1Icon = createCircularIcon("images/bacon.png");
+       ImageIcon button2Icon = createCircularIcon("images/bacon.png");
+       ImageIcon button3Icon = createCircularIcon("images/bacon.png");
+       ImageIcon button4Icon = createCircularIcon("images/bacon.png");
 
         // Create the buttons and set the icons
         JButton button1 = new JButton();
