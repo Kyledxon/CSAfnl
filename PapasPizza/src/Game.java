@@ -79,8 +79,8 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 
         ImageIcon button1Icon = createCircularIcon("images/ordericon.png");
         ImageIcon button2Icon = createCircularIcon("images/ordericon.png");
-        ImageIcon button3Icon = createCircularIcon("images/ordericon.png");
-        ImageIcon button4Icon = createCircularIcon("images/ordericon.png");
+        ImageIcon button3Icon = createCircularIcon("images/cooking icon.png");
+        ImageIcon button4Icon = createCircularIcon("images/new cutter.png");
 
         // Create the buttons and set the icons
         JButton button1 = new JButton();
