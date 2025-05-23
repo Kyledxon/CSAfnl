@@ -34,6 +34,12 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
     private JPanel cards; // The container for the screens
 	private int width 	= 1020;
 	private int height 	= 1040;
+	private OrderScreen orderScreen;
+    private ToppingScreen toppingsScreen;
+    private CookingScreen cookingScreen;
+    private CuttingScreen cuttingScreen;
+	
+	
 	private static boolean canOrder = true;
 	private enum STATE { MENU, GAME }
 	private STATE state = STATE.MENU;
@@ -57,10 +63,14 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         cards = new JPanel(cardLayout);
 
         // Create the panels (screens) with different sprite sets
-        DrawPane orderScreen = new DrawPane("Order Screen");
-        DrawPane toppingsScreen = new DrawPane("Toppings Screen");
-        DrawPane cookingScreen = new DrawPane("Cooking Screen");
-        DrawPane cuttingScreen = new DrawPane("Cutting Screen");
+        //DrawPane orderScreen = new DrawPane("Order Screen");
+        //DrawPane toppingsScreen = new DrawPane("Toppings Screen");
+        //DrawPane cookingScreen = new DrawPane("Cooking Screen");
+        //DrawPane cuttingScreen = new DrawPane("Cutting Screen");
+        orderScreen = new OrderScreen();
+        toppingsScreen = new ToppingScreen();
+        cookingScreen = new CookingScreen();
+        cuttingScreen = new CuttingScreen();
 
         // Add the screens to the container with names
         cards.add(orderScreen, "Order Screen");
@@ -76,35 +86,63 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         // Add buttons to switch screens
         
         JPanel buttonPanel = new JPanel();
-//sdfasda
+        
         ImageIcon button1Icon = createCircularIcon("images/ordericon.png");
-        ImageIcon button2Icon = createCircularIcon("images/topping icon.png");
+        ImageIcon button2Icon = createCircularIcon("images/toppings icon.png");
         ImageIcon button3Icon = createCircularIcon("images/cooking icon.png");
         ImageIcon button4Icon = createCircularIcon("images/new cutter.png");
+        
+        JButton button1 = new JButton("Order");
+        button1.addActionListener(e -> {
+            cardLayout.show(cards, "Order Screen");
+            orderScreen.onShow();
+        });
 
+        JButton button2 = new JButton("Toppings");
+        button2.addActionListener(e -> {
+            cardLayout.show(cards, "Toppings Screen");
+            toppingsScreen.onShow();
+        });
+
+        JButton button3 = new JButton("Cooking");
+        button3.addActionListener(e -> {
+            cardLayout.show(cards, "Cooking Screen");
+            cookingScreen.onShow();
+        });
+
+        JButton button4 = new JButton("Cutting");
+        button4.addActionListener(e -> {
+            cardLayout.show(cards, "Cutting Screen");
+            cuttingScreen.onShow();
+        });
+
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        buttonPanel.add(button4);
+        add(buttonPanel, BorderLayout.SOUTH);
         // Create the buttons and set the icons
-        JButton button1 = new JButton();
         button1.setIcon(button1Icon);
         button1.setBorderPainted(false);
         button1.setContentAreaFilled(false);
         button1.setFocusPainted(false);
         button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
 
-        JButton button2 = new JButton();
+        
         button2.setIcon(button2Icon);
         button2.setBorderPainted(false);
         button2.setContentAreaFilled(false);
         button2.setFocusPainted(false);
         button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
 
-        JButton button3 = new JButton();
+        
         button3.setIcon(button3Icon);
         button3.setBorderPainted(false);
         button3.setContentAreaFilled(false);
         button3.setFocusPainted(false);
         button3.addActionListener(e -> cardLayout.show(cards, "Cooking Screen"));
 
-        JButton button4 = new JButton();
+        
         button4.setIcon(button4Icon);
         button4.setBorderPainted(false);
         button4.setContentAreaFilled(false);
