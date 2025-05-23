@@ -112,7 +112,7 @@ public class DragSpriteExample extends JPanel implements MouseListener, MouseMot
     public void mouseClicked(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e ){}
-
+    
     public static void main(String[] args) {
         JFrame frame = new JFrame("DragSpriteExample");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
