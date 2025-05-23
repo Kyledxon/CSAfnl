@@ -36,7 +36,7 @@ public class customer {
     }
 
     private orders generateRandomOrder() {
-        List<String> possibleToppings = Arrays.asList("Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon", "Olives", "Peppers");
+        List<String> possibleToppings = Arrays.asList("Pepperoni", "Mushrooms", "Onions", "Peppers", "Sausage", "Bacon", "Olives");
         Random rand = new Random();
 
         // Pick 2–4 random toppings
