@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -24,7 +25,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
-public class Game extends JFrame implements MouseListener, ActionListener{
+public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
+	
+	
 	
 	JFrame frame;
 	private CardLayout cardLayout;
@@ -32,6 +35,12 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 	private int width 	= 1020;
 	private int height 	= 1040;
 	private static boolean canOrder = true;
+	private enum STATE { MENU, GAME }
+	private STATE state = STATE.MENU;
+	
+	ArrayList<customer> Customers = new ArrayList<customer>();
+	
+	
 	
 	
 
@@ -113,6 +122,12 @@ public class Game extends JFrame implements MouseListener, ActionListener{
         addMenus();
         // Show the frame
         frame.setVisible(true);
+        
+        if(state == STATE.MENU) {
+        	
+        }else if(state == STATE.GAME) {
+        	
+        }
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
@@ -193,6 +208,7 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 	}
 	
 	
+
 	 
 
 	@Override
@@ -228,6 +244,33 @@ public class Game extends JFrame implements MouseListener, ActionListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(state == STATE.MENU && e.getKeyCode() == KeyEvent.VK_ENTER) {
+			state = STATE.GAME;
+			return;
+		}
+		
+		if(state == STATE.GAME) {
+			if(e.getKeyCode() == 13 || e.getKeyCode() == 10) {
+				
+			}
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
