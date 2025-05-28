@@ -1,18 +1,20 @@
 import java.awt.Color;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class CookingScreen extends GameScreen {
 
     public CookingScreen() {
-        setBackground(Color.ORANGE);
-        add(new JLabel("Order Screen - Put order UI here"));
-        // Add your buttons, images, etc.
+    	
     }
 
     @Override
     public void onShow() {
-        // This will be called every time the screen is shown
-        System.out.println("OrderScreen is now visible");
-        // You can refresh data, reset state, etc.
+        sprites.clear();
+        ImageIcon table = new ImageIcon("images/baking.png");
+    	Image tableImage = table.getImage();
+    	sprites.add(new Sprite(-9, 40, tableImage, .5));
     }
 }

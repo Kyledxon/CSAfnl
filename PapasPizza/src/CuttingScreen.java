@@ -1,18 +1,20 @@
 import java.awt.Color;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class CuttingScreen extends GameScreen {
 
     public CuttingScreen() {
-        setBackground(Color.ORANGE);
-        add(new JLabel("Order Screen - Put order UI here"));
-        // Add your buttons, images, etc.
+        
     }
 
     @Override
     public void onShow() {
-        // This will be called every time the screen is shown
-        System.out.println("OrderScreen is now visible");
-        // You can refresh data, reset state, etc.
+        sprites.clear();
+        ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
+    	Image pizzaImage = pizza.getImage();
+    	sprites.add(new Sprite(0, 0, pizzaImage, .5));
     }
 }

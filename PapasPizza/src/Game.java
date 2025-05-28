@@ -115,6 +115,9 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
             cardLayout.show(cards, "Cutting Screen");
             cuttingScreen.onShow();
         });
+        
+        //Start on order screen
+        orderScreen.onShow();
 
         buttonPanel.add(button1);
         buttonPanel.add(button2);
@@ -156,16 +159,10 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         buttonPanel.add(button4);
         
         frame.add(buttonPanel, BorderLayout.SOUTH);
-        //hi
         addMenus();
         // Show the frame
         frame.setVisible(true);
         
-        if(state == STATE.MENU) {
-        	
-        }else if(state == STATE.GAME) {
-        	
-        }
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
