@@ -21,6 +21,27 @@ public class Sprite2 {
         this.scaleWidth = scale;
         this.scaleHeight = scale;
     }
+   
+
+    public void draw(Graphics2D g2d) {
+        if (!visible) return; // skip if not visible
+        if (scaleWidth != 1.0) {
+            g2d.drawImage(image, x, y, (int)(image.getWidth(null) * scaleWidth), (int)(image.getHeight(null) * scaleWidth), null);
+        } else {
+            g2d.drawImage(image, x, y, null);
+        }
+    }
+
+    
+    public boolean contains(int mouseX, int mouseY) {
+        int scaledWidth = (int)(image.getWidth(null) * 0.5);
+        int scaledHeight = (int)(image.getHeight(null) * 0.5);
+        return mouseX >= x && mouseX <= x + scaledWidth &&
+               mouseY >= y && mouseY <= y + scaledHeight;
+    }
+    
+    
+    
 
     // Getters
     public int getX() { return x; }
@@ -35,11 +56,6 @@ public class Sprite2 {
         return (int) (image.getHeight(null) * scaleHeight);
     }
 
-    // Collision check
-    public boolean contains(int px, int py) {
-        return px >= x && px <= x + getWidth() &&
-               py >= y && py <= y + getHeight();
-    }
 
     // Centered drag support
     public void setPositionFromCenter(int centerX, int centerY) {
@@ -62,12 +78,10 @@ public class Sprite2 {
     }
 
     // Drawing
-    public void draw(Graphics2D g2d) {
-        if (!visible) return;
+    
 
-        AffineTransform tx = new AffineTransform();
-        tx.translate(x, y);
-        tx.scale(scaleWidth, scaleHeight);
-        g2d.drawImage(image, tx, null);
-    }
+	public double getScale() {
+		// TODO Auto-generated method stub
+		return scaleWidth;
+	}
 }
