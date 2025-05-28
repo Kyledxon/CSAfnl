@@ -22,5 +22,6 @@ public class ToppingScreen extends GameScreen {
     	Image pizzaImage = pizza.getImage();
     	sprites.add(new Sprite(200, 100, pizzaImage, .75));
         // You can refresh data, reset state, etc.
+    	
     }
 }

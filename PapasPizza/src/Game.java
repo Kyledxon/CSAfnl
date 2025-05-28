@@ -61,12 +61,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		frame = new JFrame("Los Pollos Hermanos");
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
-
-        // Create the panels (screens) with different sprite sets
-        //DrawPane orderScreen = new DrawPane("Order Screen");
-        //DrawPane toppingsScreen = new DrawPane("Toppings Screen");
-        //DrawPane cookingScreen = new DrawPane("Cooking Screen");
-        //DrawPane cuttingScreen = new DrawPane("Cutting Screen");
+        
         orderScreen = new OrderScreen();
         toppingsScreen = new ToppingScreen();
         cookingScreen = new CookingScreen();

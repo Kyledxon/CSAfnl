@@ -16,5 +16,6 @@ public class CuttingScreen extends GameScreen {
         ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
     	Image pizzaImage = pizza.getImage();
     	sprites.add(new Sprite(0, 0, pizzaImage, .5));
+    	
     }
 }

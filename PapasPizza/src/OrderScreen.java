@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 public class OrderScreen extends GameScreen {
 	
 	
-	
     public OrderScreen() {
     	
     }
