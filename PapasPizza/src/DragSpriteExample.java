@@ -53,18 +53,15 @@ public class DragSpriteExample extends JPanel implements MouseListener, MouseMot
         g.setColor(Color.RED);
         for (Sprite s : sprites) {
         	if(s.placed1 && s != draggingSprite && s.scaledImage != null) {
-        		g.fillOval(s.x - pickupRadius / 2, s.y - pickupRadius / 2, pickupRadius, pickupRadius);
+        		g.drawImage(s.scaledImage, s.x - s.width / 2, s.y - s.height / 2, null);
         	}
-            
         }
-
         // Draw placed sprites (skip the one currently being dragged)
         for (Sprite s : sprites) {
             if (s.placed && s != draggingSprite && s.scaledImage != null) {
                 g.drawImage(s.scaledImage, s.x - s.width / 2, s.y - s.height / 2, null);
             }
         }
-
         // Draw dragged sprite under the mouse
         if (draggingSprite != null && draggingSprite.scaledImage != null) {
             g.drawImage(draggingSprite.scaledImage, dragX - draggingSprite.width / 2, dragY - draggingSprite.height / 2, null);
@@ -112,7 +109,7 @@ public class DragSpriteExample extends JPanel implements MouseListener, MouseMot
     public void mouseClicked(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e ){}
-
+    
     public static void main(String[] args) {
         JFrame frame = new JFrame("DragSpriteExample");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
