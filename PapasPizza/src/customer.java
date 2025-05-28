@@ -3,18 +3,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 public class customer {
 
     private List<orders> orders;
     private String name;
     private int xPos;
     private int yPos;
+    private ImageIcon image;
 
-    public customer(int posX, int posY, String nm) {
+    public customer(int posX, int posY, String nm, ImageIcon im) {
         this.orders = new ArrayList<>();
         this.xPos = posX;
         this.yPos = posY;
         this.name = nm;
+        this.image = im;
     }
 // hey 
     public orders placeOrder() {
