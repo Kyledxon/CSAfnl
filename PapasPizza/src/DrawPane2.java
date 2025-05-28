@@ -12,6 +12,9 @@ public class DrawPane2 extends JPanel {
 	private ArrayList<Sprite2> staticSprites;   // for table, crust, etc.
 	private ArrayList<Sprite2> draggableSprites; // only these can be moved
 	
+	private ArrayList<Sprite2> infiniteSources = new ArrayList<>(); //tester
+
+	
 	
     private ArrayList<Sprite2> sprites;
     private Sprite2 draggingSprite = null;
@@ -42,26 +45,51 @@ public class DrawPane2 extends JPanel {
             staticSprites.add(new Sprite2(200, 100, pizzaImage, .75));
 
             // Draggable toppings
-            draggableSprites.add(new Sprite2(100, 300, new ImageIcon("images/bacon.png").getImage(), 0.5));
-            draggableSprites.add(new Sprite2(160, 300, new ImageIcon("images/mushroom.png").getImage(), 0.5));
-            draggableSprites.add(new Sprite2(220, 300, new ImageIcon("images/olive.png").getImage(), 0.5));
-            draggableSprites.add(new Sprite2(100, 300, new ImageIcon("images/onion.png").getImage(), 0.5));
-            draggableSprites.add(new Sprite2(160, 300, new ImageIcon("images/pepper.png").getImage(), 0.5));
-            draggableSprites.add(new Sprite2(41, 593, new ImageIcon("images/peperoni.png").getImage(), 0.5));
+            Sprite2 bacon = new Sprite2(733, 726, new ImageIcon("images/bacon.png").getImage(), 0.25);
+            Sprite2 mushroom = new Sprite2(134, 740, new ImageIcon("images/mushroom.png").getImage(), 0.25);
+            Sprite2 olive = new Sprite2(833, 553, new ImageIcon("images/olive.png").getImage(), 0.25);
+            Sprite2 onion = new Sprite2(318, 823, new ImageIcon("images/onion.png").getImage(), 0.25);
+            Sprite2 pepper = new Sprite2(569, 818, new ImageIcon("images/pepper.png").getImage(), 0.25);
+            Sprite2 pepperoni = new Sprite2(41, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25);
+           
+            bacon.setVisible(false);
+            mushroom.setVisible(false);
+            olive.setVisible(false);
+            onion.setVisible(false);
+            pepper.setVisible(false);
+            pepperoni.setVisible(false);
+            
+            infiniteSources.add(bacon);
+            infiniteSources.add(mushroom);
+            infiniteSources.add(olive);
+            infiniteSources.add(onion);
+            infiniteSources.add(pepper);
+            infiniteSources.add(pepperoni);
+
+            draggableSprites.addAll(infiniteSources);
 
             addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    for (int i = draggableSprites.size() - 1; i >= 0; i--) {
-                        Sprite2 s = draggableSprites.get(i);
-                        if (s.contains(e.getX(), e.getY())) {
-                            draggingSprite = s;
-                            dragOffsetX = e.getX() - s.getX();
-                            dragOffsetY = e.getY() - s.getY();
-                            break;
-                        }
-                    }
-                }
+            	@Override
+            	public void mousePressed(MouseEvent e) {
+            	    for (int i = draggableSprites.size() - 1; i >= 0; i--) {
+            	        Sprite2 s = draggableSprites.get(i);
+            	        if (s.contains(e.getX(), e.getY())) {
+            	            if (infiniteSources.contains(s)) {
+            	                // Create a visible clone from the invisible source
+            	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale());
+            	                clone.setVisible(true);
+            	                draggableSprites.add(clone);
+            	                draggingSprite = clone;
+            	            } else {
+            	                // Existing visible sprite
+            	                draggingSprite = s;
+            	            }
+            	            dragOffsetX = e.getX() - s.getX();
+            	            dragOffsetY = e.getY() - s.getY();
+            	            break;
+            	        }
+            	    }
+            	}
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
@@ -83,21 +111,39 @@ public class DrawPane2 extends JPanel {
             addMouseMotionListener(new MouseMotionAdapter() {
                 @Override
                 public void mouseMoved(MouseEvent e) {
-                    System.out.println("Mouse moved to: (" + e.getX() + ", " + e.getY() + ")");
+                    //System.out.println("Mouse moved to: (" + e.getX() + ", " + e.getY() + ")");
                 }
 
                 @Override
                 public void mouseDragged(MouseEvent e) {
-                    System.out.println("Mouse dragged to: (" + e.getX() + ", " + e.getY() + ")");
+                    //System.out.println("Mouse dragged to: (" + e.getX() + ", " + e.getY() + ")");
                 }
             });
 
             // To print mouse coordinates when the mouse is clicked or pressed
             addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    System.out.println("Mouse pressed at: (" + e.getX() + ", " + e.getY() + ")");
-                }
+            	@Override
+            	public void mousePressed(MouseEvent e) {
+            	    for (int i = draggableSprites.size() - 1; i >= 0; i--) {
+            	        Sprite2 s = draggableSprites.get(i);
+            	        if (s.contains(e.getX(), e.getY())) {
+            	            // If it's one of the infinite source toppings
+            	            if (infiniteSources.contains(s)) {
+            	                // Clone it and add the clone to draggableSprites
+            	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale());
+            	                draggableSprites.add(clone);
+            	                draggingSprite = clone;
+            	            } else {
+            	                // It's a previously placed topping
+            	                draggingSprite = s;
+            	            }
+            	            dragOffsetX = e.getX() - s.getX();
+            	            dragOffsetY = e.getY() - s.getY();
+            	            break;
+            	        }
+            	    }
+            	}
+
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
