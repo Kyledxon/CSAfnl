@@ -45,7 +45,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private STATE state = STATE.MENU;
 	
 	ArrayList<customer> Customers = new ArrayList<customer>();
-	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("scifi.wav", true);
+	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("negroyazul.wav", true);
 	
 	
 	
