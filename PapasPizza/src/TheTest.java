@@ -23,7 +23,7 @@ public class TheTest extends JFrame {
         // Create colored panels with semi-transparent backgrounds
         JPanel redPanel = new JPanel();
         redPanel.setOpaque(false);
-        redPanel.setBackground(new Color(255, 0, 0, 128)); // 50% transparent red
+        redPanel.setBackground(Color.red); // 50% transparent red
 
         JPanel greenPanel = new JPanel();
         greenPanel.setOpaque(false);
