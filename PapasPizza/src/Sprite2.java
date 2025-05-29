@@ -21,7 +21,6 @@ public class Sprite2 {
         this.scaleWidth = scale;
         this.scaleHeight = scale;
     }
-   
 
     public void draw(Graphics2D g2d) {
         if (!visible) return; // skip if not visible

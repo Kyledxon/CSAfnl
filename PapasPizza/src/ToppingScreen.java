@@ -14,7 +14,6 @@ public class ToppingScreen extends GameScreen {
 	
 	
 	private ArrayList<Sprite2> draggableSprites = new ArrayList<>(); // only these can be moved
-	
 	private ArrayList<Sprite2> infiniteSources = new ArrayList<>(); //tester
 
 	
@@ -146,6 +145,16 @@ public class ToppingScreen extends GameScreen {
                 System.out.println("Mouse clicked at: (" + e.getX() + ", " + e.getY() + ")");
             }
         });
+    }
+    
+    public ArrayList<Sprite2> getPlacedToppings() {
+        ArrayList<Sprite2> placedToppings = new ArrayList<>();
+        for (Sprite2 s : draggableSprites) {
+            if (!infiniteSources.contains(s)) {
+                placedToppings.add(new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale()));
+            }
+        }
+        return placedToppings;
     }
     
     @Override
