@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,8 +13,8 @@ import javax.swing.JLabel;
 public class ToppingScreen extends GameScreen {
 	
 	
-	private ArrayList<Sprite2> staticSprites;   // for table, crust, etc.
-	private ArrayList<Sprite2> draggableSprites; // only these can be moved
+	private ArrayList<Sprite2> staticSprites = new ArrayList<>();   // for table, crust, etc.
+	private ArrayList<Sprite2> draggableSprites = new ArrayList<>(); // only these can be moved
 	
 	private ArrayList<Sprite2> infiniteSources = new ArrayList<>(); //tester
 
@@ -147,5 +149,19 @@ public class ToppingScreen extends GameScreen {
                 System.out.println("Mouse clicked at: (" + e.getX() + ", " + e.getY() + ")");
             }
         });
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        for (Sprite2 sprite : staticSprites) {
+            sprite.draw(g2d); // unmovable background stuff
+        }
+
+        for (Sprite2 sprite : draggableSprites) {
+            sprite.draw(g2d); // toppings that you can move
+        }
     }
 }
