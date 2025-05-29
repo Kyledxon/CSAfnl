@@ -6,13 +6,16 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class customer {
-
     private List<orders> orders;
     private String name;
     private int xPos;
     private int yPos;
     private ImageIcon image;
-
+    private String[] peps = {"people/fring.png", "people/jesse.png","people/mike.png",
+    		"people/random1.png","people/salamanca twins.png","people/saul.png","people/tio.png",
+    		"people/tortuga.png","people/tuco.png","people/tucos henchmen.png","people/walt.png"};
+    
+    
     public customer(int posX, int posY, String nm, ImageIcon im) {
         this.orders = new ArrayList<>();
         this.xPos = posX;
@@ -20,7 +23,18 @@ public class customer {
         this.name = nm;
         this.image = im;
     }
+    
+    public customer() {
+    	int randLoc = (int) (Math.random()*peps.length);
+        this.orders = new ArrayList<>();
+        this.image = new ImageIcon(peps[randLoc]);
+        String name = peps[randLoc];
+        this.name = name.substring(name.lastIndexOf("/")+1,name.lastIndexOf("."));
+        this.xPos = 0;
+        this.yPos = 0;
+    }
 // hey 
+    /*
     public orders placeOrder() {
         // Simulate customer walking to counter
     	
@@ -37,6 +51,23 @@ public class customer {
 
         System.out.println(name + " placed an order: " + newOrder);
         return newOrder;
+    }
+    */
+    public String placeOrder() {
+        // Simulate customer walking to counter
+    	
+        while (yPos < 600) {
+            yPos++;
+        }
+        while (xPos > 800) {
+            xPos--;
+        }
+
+        // Generate random order
+        orders newOrder = generateRandomOrder();
+        orders.add(newOrder);
+        return newOrder.toString();
+        //System.out.println(name + " placed an order: " + newOrder);
     }
 
     private orders generateRandomOrder() {
@@ -86,4 +117,14 @@ public class customer {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public ImageIcon getImageString() {
+    	return image;
+    }
+    
+    public static void main(String[] args) {
+		customer newCust = new customer();
+		System.out.println(newCust.placeOrder());
+		
+	}
 }
