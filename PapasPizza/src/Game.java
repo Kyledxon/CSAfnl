@@ -24,6 +24,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.Timer;
 
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
@@ -54,6 +55,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	public static void main(String[] args) {
 		// Create an instance of the board
 		new Game();
+		
 
 	}
 
