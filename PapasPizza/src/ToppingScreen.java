@@ -13,14 +13,11 @@ import javax.swing.JLabel;
 public class ToppingScreen extends GameScreen {
 	
 	
-	private ArrayList<Sprite2> staticSprites = new ArrayList<>();   // for table, crust, etc.
 	private ArrayList<Sprite2> draggableSprites = new ArrayList<>(); // only these can be moved
 	
 	private ArrayList<Sprite2> infiniteSources = new ArrayList<>(); //tester
 
 	
-	
-    private ArrayList<Sprite2> sprites;
     private Sprite2 draggingSprite = null;
     private int dragOffsetX, dragOffsetY;
     private boolean isDraggableScreen = false;
@@ -36,12 +33,12 @@ public class ToppingScreen extends GameScreen {
         // Static table
         ImageIcon table = new ImageIcon("images/toppings table.png");
         Image tableImage = table.getImage();
-        staticSprites.add(new Sprite2(-9, 40, tableImage));
+        sprites.add(new Sprite(-9, 40, tableImage));
 
         // Static pizza crust
         ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
         Image pizzaImage = pizza.getImage();
-        staticSprites.add(new Sprite2(200, 100, pizzaImage, .75));
+        sprites.add(new Sprite(200, 100, pizzaImage, .75));
 
         // Draggable toppings
         Sprite2 bacon = new Sprite2(738, 731, new ImageIcon("images/bacon.png").getImage(), 0.25);
@@ -156,7 +153,7 @@ public class ToppingScreen extends GameScreen {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        for (Sprite2 sprite : staticSprites) {
+        for (Sprite sprite : sprites) {
             sprite.draw(g2d); // unmovable background stuff
         }
 
