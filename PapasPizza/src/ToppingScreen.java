@@ -44,12 +44,12 @@ public class ToppingScreen extends GameScreen {
         staticSprites.add(new Sprite2(200, 100, pizzaImage, .75));
 
         // Draggable toppings
-        Sprite2 bacon = new Sprite2(733, 726, new ImageIcon("images/bacon.png").getImage(), 0.25);
-        Sprite2 mushroom = new Sprite2(134, 740, new ImageIcon("images/mushroom.png").getImage(), 0.25);
-        Sprite2 olive = new Sprite2(833, 553, new ImageIcon("images/olive.png").getImage(), 0.25);
-        Sprite2 onion = new Sprite2(318, 823, new ImageIcon("images/onion.png").getImage(), 0.25);
-        Sprite2 pepper = new Sprite2(569, 818, new ImageIcon("images/pepper.png").getImage(), 0.25);
-        Sprite2 pepperoni = new Sprite2(41, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25);
+        Sprite2 bacon = new Sprite2(738, 731, new ImageIcon("images/bacon.png").getImage(), 0.25);
+        Sprite2 mushroom = new Sprite2(140, 743, new ImageIcon("images/mushroom.png").getImage(), 0.25);
+        Sprite2 olive = new Sprite2(847, 558, new ImageIcon("images/olive.png").getImage(), 0.25);
+        Sprite2 onion = new Sprite2(322, 827, new ImageIcon("images/onion.png").getImage(), 0.25);
+        Sprite2 pepper = new Sprite2(575, 823, new ImageIcon("images/pepper.png").getImage(), 0.25);
+        Sprite2 pepperoni = new Sprite2(47, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25);
        
         bacon.setVisible(false);
         mushroom.setVisible(false);
