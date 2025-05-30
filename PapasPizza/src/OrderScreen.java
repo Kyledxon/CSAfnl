@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 public class OrderScreen extends GameScreen {
 	
 	private customer randCust = new customer();
+	String[] theOrder = randCust.printableString();
 	private Image custImage = randCust.getImageString().getImage();
     public OrderScreen() {
     	
@@ -55,7 +57,6 @@ public class OrderScreen extends GameScreen {
         // After changing sprites, repaint so paintComponent is called
         repaint();
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -65,8 +66,14 @@ public class OrderScreen extends GameScreen {
             sprite.draw(g2d); // Call the draw method of the sprite which handles scaling
         }
         g.setColor(Color.white);
-        g.fillRect(800, 490, 30, 30);
+        g.fillRect(620, 475, 380, 120);
         g.setColor(Color.black);
-        g.drawString(randCust.placeOrder(), 800, 500);
+        Font theFont = new Font("Arial", Font.BOLD, 20);
+        g.setFont(theFont);
+        int width = 0;
+        for(String it : theOrder) {
+        	g.drawString(it, 630, 500+width);
+        	width += 25;
+        }
     }
 }
