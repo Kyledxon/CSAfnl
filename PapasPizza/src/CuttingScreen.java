@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,16 +13,17 @@ import javax.swing.JLabel;
 public class CuttingScreen extends GameScreen implements MouseListener{
 
     public CuttingScreen() {
-    	 int numCuts; 
-    	    int deltaX;
-    	    int deltaY;
-    	    int startX;
-    	    int endX;
-    	    int startY;
-    	    int endY;
+    
     }
 
-   
+	 	int numCutsNeeded; 
+	    int deltaX;
+	    int deltaY;
+	    int startX;
+	    int endX;
+	    int startY;
+	    int endY;
+	    int cutsDone;
     @Override
     public void onShow() {
     	ArrayList<Sprite2> placedToppings = Game.toppingsScreen.getPlacedToppings();
@@ -42,27 +44,41 @@ public class CuttingScreen extends GameScreen implements MouseListener{
     	}
     	
     	
-    	for(Sprite2 topping : placedToppings) {
-    		sprites.add(new Sprite(topping.getX(), topping.getY(), topping.getImage(), topping.getScale()));
-    	}
+    	
     }
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+        int y = e.getY();
+        System.out.println("Mouse pressed at: (" + x + ", " + y + ")");
+        startX = x;
+        startY = y;
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = e.getX();
+        int y = e.getY();
+        System.out.println("Mouse pressed at: (" + x + ", " + y + ")");
+        startX = x;
+        startY = y;
 	}
-
+	
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		int x = e.getX();
+        int y = e.getY();
+        System.out.println("Mouse released at: (" + x + ", " + y + ")");
+        endX = x;
+        endY = y;
+        cutsDone++;
+        
 	}
 
 	@Override
@@ -76,4 +92,12 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	public void paint(Graphics g) {
+		// Draw Grid
+		
+			
+			
+		}
 }
