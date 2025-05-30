@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 
 public class OrderScreen extends GameScreen {
 	
-	
+	private customer randCust = new customer();
+	private Image custImage = randCust.getImageString().getImage();
     public OrderScreen() {
     	
     }
@@ -50,8 +51,22 @@ public class OrderScreen extends GameScreen {
         ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
     	Image pollosImage = pollos.getImage();
         sprites.add(new Sprite(0, 0, pollosImage));
+        sprites.add(new Sprite(800,550,custImage));
         // After changing sprites, repaint so paintComponent is called
         repaint();
     }
-    
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
+        Graphics2D g2d = (Graphics2D) g; // Cast Graphics to Graphics2D
+        for (Sprite sprite : sprites) {
+            sprite.draw(g2d); // Call the draw method of the sprite which handles scaling
+        }
+        g.setColor(Color.white);
+        g.fillRect(800, 490, 30, 30);
+        g.setColor(Color.black);
+        g.drawString(randCust.placeOrder(), 800, 500);
+    }
 }

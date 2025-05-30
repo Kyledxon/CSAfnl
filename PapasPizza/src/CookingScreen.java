@@ -24,10 +24,10 @@ public class CookingScreen extends GameScreen {
     	sprites.add(new Sprite(20, 60, tableImage, .65));
     	ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
         Image pizzaImage = pizza.getImage();
-        sprites.add(new Sprite(85, 160, pizzaImage, .55));
+        sprites.add(new Sprite(140, 208, pizzaImage, .55));
     	
     	for(Sprite2 topping : placedToppings) {
-    		sprites.add(new Sprite(topping.getX()-115, topping.getY()+60, topping.getImage(), topping.getScale()-.05));
+    		sprites.add(new Sprite((int)(140 + (topping.getX() - 200)/1.37), (int)(208 + (topping.getY() - 100)/1.37), topping.getImage(), topping.getScale()/1.37));
     	}
     	
     }
