@@ -26,8 +26,11 @@ public class orders {
 
     @Override
     public String toString() {
+    	return "I would like a pizza with "+toppings+" baked for "+bakeTime + "s"+ ", and with "+numCuts+" cuts please!";
+    	/*
         return "Toppings: " + toppings +
                ", Bake Time: " + bakeTime + "s" +
                ", Cuts: " + numCuts;
+               */
     }
 } //hey
