@@ -55,6 +55,7 @@ public class OrderScreen extends GameScreen {
         // After changing sprites, repaint so paintComponent is called
         repaint();
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

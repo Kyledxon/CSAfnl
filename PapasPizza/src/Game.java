@@ -35,8 +35,8 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
     private JPanel cards; // The container for the screens
 	private int width 	= 1020;
 	private int height 	= 1040;
-	private OrderScreen orderScreen;
-    private ToppingScreen toppingsScreen;
+	private OrderScreen orderScreen = new OrderScreen();
+    public static ToppingScreen toppingsScreen = new ToppingScreen();
     private CookingScreen cookingScreen;
     private CuttingScreen cuttingScreen;
 	
@@ -90,25 +90,25 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         ImageIcon button3Icon = createCircularIcon("images/cooking icon.png");
         ImageIcon button4Icon = createCircularIcon("images/new cutter.png");
         
-        JButton button1 = new JButton("Order");
+        JButton button1 = new JButton();
         button1.addActionListener(e -> {
             cardLayout.show(cards, "Order Screen");
             orderScreen.onShow();
         });
 
-        JButton button2 = new JButton("Toppings");
+        JButton button2 = new JButton();
         button2.addActionListener(e -> {
             cardLayout.show(cards, "Toppings Screen");
             toppingsScreen.onShow();
         });
 
-        JButton button3 = new JButton("Cooking");
+        JButton button3 = new JButton();
         button3.addActionListener(e -> {
             cardLayout.show(cards, "Cooking Screen");
             cookingScreen.onShow();
         });
 
-        JButton button4 = new JButton("Cutting");
+        JButton button4 = new JButton();
         button4.addActionListener(e -> {
             cardLayout.show(cards, "Cutting Screen");
             cuttingScreen.onShow();

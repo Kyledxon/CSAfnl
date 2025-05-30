@@ -21,7 +21,6 @@ public class Sprite2 {
         this.scaleWidth = scale;
         this.scaleHeight = scale;
     }
-   
 
     public void draw(Graphics2D g2d) {
         if (!visible) return; // skip if not visible
@@ -31,7 +30,11 @@ public class Sprite2 {
             g2d.drawImage(image, x, y, null);
         }
     }
-
+    
+    public void setScale(double newScale) {
+        this.scaleWidth = newScale;
+        this.scaleHeight = newScale;
+    }
     
     public boolean contains(int mouseX, int mouseY) {
         int scaledWidth = (int)(image.getWidth(null) * 0.5);

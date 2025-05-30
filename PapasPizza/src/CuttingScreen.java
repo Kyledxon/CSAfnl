@@ -3,6 +3,9 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import java.util.ArrayList;
+
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -21,12 +24,19 @@ public class CuttingScreen extends GameScreen implements MouseListener{
    
     @Override
     public void onShow() {
-        sprites.clear();
+    	ArrayList<Sprite2> placedToppings = Game.toppingsScreen.getPlacedToppings();
+    	
+    	sprites.clear();
         ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
     	Image pizzaImage = pizza.getImage();
-    	sprites.add(new Sprite(0, 0, pizzaImage, .5));
+
     	//hi
+
+    	sprites.add(new Sprite(200, 100, pizzaImage, .75));
     	
+    	for(Sprite2 topping : placedToppings) {
+    		sprites.add(new Sprite(topping.getX(), topping.getY(), topping.getImage(), topping.getScale()));
+    	}
     }
 
 	@Override
@@ -44,7 +54,7 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		 
+
 	}
 
 	@Override
