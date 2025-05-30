@@ -89,6 +89,14 @@ public class customer {
 
         return new orders(selectedToppings, bakeTime, numCuts);
     }
+    
+    public String[] printableString() {
+    	String theString = this.placeOrder();
+    	String[] lines = theString.split("\n");
+    		
+    	return lines;
+    }
+   
 
     public String getName() {
         return name;
@@ -125,6 +133,9 @@ public class customer {
     public static void main(String[] args) {
 		customer newCust = new customer();
 		System.out.println(newCust.placeOrder());
-		
+		for(String it: newCust.printableString()) {
+			System.out.println(it);
+		}
+		System.out.println(newCust.printableString());
 	}
 }

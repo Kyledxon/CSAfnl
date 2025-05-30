@@ -15,6 +15,11 @@ public class orders {
     public List<String> getToppings() {
         return toppings;
     }
+    
+    public String getStringToppings() {
+    	String result = String.join(", ", toppings);
+        return result;
+    }
 
     public int getBakeTime() {
         return bakeTime;
@@ -26,7 +31,13 @@ public class orders {
 
     @Override
     public String toString() {
-    	return "I would like a pizza with "+toppings+" baked for "+bakeTime + "s"+ ", and with "+numCuts+" cuts please!";
+    	String line1 = "I would like a pizza with ";
+    	String line2 = ""+this.getStringToppings();
+    	String line3 = "baked for "+bakeTime + "s";
+    	String line4 = "and with "+numCuts+" cuts please!";
+    	
+    	return line1 +"\n"+ line2+"\n"+ line3+"\n"+line4;
+    	
     	/*
         return "Toppings: " + toppings +
                ", Bake Time: " + bakeTime + "s" +
