@@ -28,6 +28,7 @@ public class ToppingScreen extends GameScreen {
     @Override
     public void onShow() {
         isDraggableScreen = true;
+        //Toppings toppings = new Toppings();
 
         // Static table
         ImageIcon table = new ImageIcon("images/toppings table.png");
@@ -40,12 +41,12 @@ public class ToppingScreen extends GameScreen {
         sprites.add(new Sprite(200, 100, pizzaImage, .75));
 
         // Draggable toppings
-        Sprite2 bacon = new Sprite2(738, 731, new ImageIcon("images/bacon.png").getImage(), 0.25);
-        Sprite2 mushroom = new Sprite2(140, 743, new ImageIcon("images/mushroom.png").getImage(), 0.25);
-        Sprite2 olive = new Sprite2(847, 558, new ImageIcon("images/olive.png").getImage(), 0.25);
-        Sprite2 onion = new Sprite2(322, 827, new ImageIcon("images/onion.png").getImage(), 0.25);
-        Sprite2 pepper = new Sprite2(575, 823, new ImageIcon("images/pepper.png").getImage(), 0.25);
-        Sprite2 pepperoni = new Sprite2(47, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25);
+        Sprite2 bacon = new Sprite2(738, 731, new ImageIcon("images/bacon.png").getImage(), 0.25, "bacon");
+        Sprite2 mushroom = new Sprite2(140, 743, new ImageIcon("images/mushroom.png").getImage(), 0.25, "mushroom");
+        Sprite2 olive = new Sprite2(847, 558, new ImageIcon("images/olive.png").getImage(), 0.25, "olive");
+        Sprite2 onion = new Sprite2(322, 827, new ImageIcon("images/onion.png").getImage(), 0.25, "onion");
+        Sprite2 pepper = new Sprite2(575, 823, new ImageIcon("images/pepper.png").getImage(), 0.25, "pepper");
+        Sprite2 pepperoni = new Sprite2(47, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25, "peperoni");
        
         bacon.setVisible(false);
         mushroom.setVisible(false);
@@ -71,10 +72,11 @@ public class ToppingScreen extends GameScreen {
         	        if (s.contains(e.getX(), e.getY())) {
         	            if (infiniteSources.contains(s)) {
         	                // Create a visible clone from the invisible source
-        	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale());
+        	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale(), s.getName());
         	                clone.setVisible(true);
         	                draggableSprites.add(clone);
         	                draggingSprite = clone;
+        	                
         	            } else {
         	                // Existing visible sprite
         	                draggingSprite = s;
@@ -116,7 +118,7 @@ public class ToppingScreen extends GameScreen {
         });
 
         // To print mouse coordinates when the mouse is clicked or pressed
-        addMouseListener(new MouseAdapter() {
+        /*addMouseListener(new MouseAdapter() {
         	@Override
         	public void mousePressed(MouseEvent e) {
         	    for (int i = draggableSprites.size() - 1; i >= 0; i--) {
@@ -125,9 +127,10 @@ public class ToppingScreen extends GameScreen {
         	            // If it's one of the infinite source toppings
         	            if (infiniteSources.contains(s)) {
         	                // Clone it and add the clone to draggableSprites
-        	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale());
+        	                Sprite2 clone = new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale(), s.getName());
         	                draggableSprites.add(clone);
         	                draggingSprite = clone;
+        	                
         	            } else {
         	                // It's a previously placed topping
         	                draggingSprite = s;
@@ -144,14 +147,14 @@ public class ToppingScreen extends GameScreen {
             public void mouseClicked(MouseEvent e) {
                 System.out.println("Mouse clicked at: (" + e.getX() + ", " + e.getY() + ")");
             }
-        });
+        });*/
     }
     
     public ArrayList<Sprite2> getPlacedToppings() {
         ArrayList<Sprite2> placedToppings = new ArrayList<>();
         for (Sprite2 s : draggableSprites) {
             if (!infiniteSources.contains(s)) {
-                placedToppings.add(new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale()));
+                placedToppings.add(new Sprite2(s.getX(), s.getY(), s.getImage(), s.getScale(), s.getName()));
             }
         }
         return placedToppings;

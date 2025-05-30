@@ -9,17 +9,26 @@ public class Sprite2 {
     private double scaleWidth = 1.0;
     private double scaleHeight = 1.0;
     private boolean visible = true; // Optional: control visibility if needed
+    private String name; // add this field
 
-    public Sprite2(int x, int y, Image image) {
-        this(x, y, image, 1.0);
+    
+
+    // Add getter/setter for name
+    public String getName() {
+        return name;
     }
 
-    public Sprite2(int x, int y, Image image, double scale) {
+    public Sprite2(int x, int y, Image image) {
+        this(x, y, image, 1.0, "");
+    }
+
+    public Sprite2(int x, int y, Image image, double scale, String n) {
         this.x = x;
         this.y = y;
         this.image = image;
         this.scaleWidth = scale;
         this.scaleHeight = scale;
+        this.name = n;
     }
 
     public void draw(Graphics2D g2d) {
