@@ -78,6 +78,19 @@ public class CuttingScreen extends GameScreen implements MouseListener{
         endX = x;
         endY = y;
         cutsDone++;
+        deltaX = endX - startX;
+        deltaY = endY - startY;
+        
+        if(deltaY <= 20 && deltaX >= 100) {
+        	//horizontal cut
+        	System.out.println("Good Cut!");
+        } else if(deltaY >= 100 && deltaX <= 20) {
+        	//vertical cut 
+        	System.out.println("Good Cut!");
+        }else {
+        	//bad cut smh 
+        	System.out.println("Bad Cut :(");
+        }
         
 	}
 
@@ -96,6 +109,9 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	
 	public void paint(Graphics g) {
 		// Draw Grid
+		
+		g.setColor( new Color(255, 255, 255));
+		g.drawLine(startX, startY, endX, endY);
 		
 			
 			
