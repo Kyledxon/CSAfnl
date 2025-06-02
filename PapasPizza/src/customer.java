@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class customer {
+	public static ArrayList<Integer> randTopAmt;
     private List<orders> orders;
     private String name;
     private int xPos;
@@ -33,26 +34,15 @@ public class customer {
         this.xPos = 0;
         this.yPos = 0;
     }
-// hey 
-    /*
-    public orders placeOrder() {
-        // Simulate customer walking to counter
-    	
-        while (yPos < 600) {
-            yPos++;
-        }
-        while (xPos > 800) {
-            xPos--;
-        }
-
-        // Generate random order
-        orders newOrder = generateRandomOrder();
-        orders.add(newOrder);
-
-        System.out.println(name + " placed an order: " + newOrder);
-        return newOrder;
+    
+    public static ArrayList<Integer> generateRan(){
+    	randTopAmt = new ArrayList<>();
+    	for(int i =0; i < 7; i ++) {
+    		randTopAmt.add((int) (Math.random()*4)+1);
+    	}
+    	return randTopAmt;
     }
-    */
+
     public String placeOrder() {
         // Simulate customer walking to counter
     	
@@ -71,7 +61,15 @@ public class customer {
     }
 
     private orders generateRandomOrder() {
-        List<String> possibleToppings = Arrays.asList("Pepperoni", "Mushrooms", "Onions", "Peppers", "Sausage", "Bacon", "Olives");
+    	randTopAmt = generateRan();
+        List<String> possibleToppings = Arrays.asList(
+        		randTopAmt.get(0)+" Pepperoni", 
+        		randTopAmt.get(1)+" Mushrooms",
+        		randTopAmt.get(2)+" Onions",
+        		randTopAmt.get(3)+" Peppers",
+        		randTopAmt.get(4)+" Sausage",
+        		randTopAmt.get(5)+" Bacon",
+        		randTopAmt.get(6)+" Olives");
         Random rand = new Random();
 
         // Pick 2–4 random toppings
