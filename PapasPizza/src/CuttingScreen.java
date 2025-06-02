@@ -1,9 +1,11 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 
@@ -24,6 +26,10 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	    int startY;
 	    int endY;
 	    int cutsDone;
+	    
+	    private ArrayList<Line2D> cutLines = new ArrayList<>();
+	    
+	    
     @Override
     public void onShow() {
     	ArrayList<Sprite2> placedToppings = Game.toppingsScreen.getPlacedToppings();
@@ -84,6 +90,9 @@ public class CuttingScreen extends GameScreen implements MouseListener{
         deltaX = endX - startX;
         deltaY = endY - startY;
         
+        cutLines.add(new Line2D.Float(startX, startY, endX, endY));
+
+        
         if(deltaY <= 20 && deltaX >= 100) {
         	//horizontal cut
         	System.out.println("Good Cut!");
@@ -115,8 +124,14 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-	    super.paintComponent(g);  // Always call this first
-	    g.setColor(Color.WHITE);
-	    g.drawLine(startX, startY, endX, endY);
+		super.paintComponent(g);
+
+	    Graphics2D g2d = (Graphics2D) g;
+	    g2d.setColor(Color.WHITE);
+	    g2d.setStroke(new BasicStroke(5)); // Thicker lines
+
+	    for (Line2D line : cutLines) {
+	        g2d.draw(line);
+	    }
 	}
 }
