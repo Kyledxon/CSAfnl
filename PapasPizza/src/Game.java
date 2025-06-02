@@ -29,7 +29,6 @@ import javax.swing.Timer;
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
 	
-	
 	JFrame frame;
 	private CardLayout cardLayout;
     private JPanel cards; // The container for the screens
@@ -42,8 +41,6 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	
 	
 	private static boolean canOrder = true;
-	private enum STATE { MENU, GAME }
-	private STATE state = STATE.MENU;
 	
 	ArrayList<customer> Customers = new ArrayList<customer>();
 	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("negroyazul.wav", true);
@@ -289,17 +286,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if(state == STATE.MENU && e.getKeyCode() == KeyEvent.VK_ENTER) {
-			state = STATE.GAME;
-			return;
-		}
 		
-		if(state == STATE.GAME) {
-			if(e.getKeyCode() == 13 || e.getKeyCode() == 10) {
-				
-			}
-		}
 	}
 
 	@Override
