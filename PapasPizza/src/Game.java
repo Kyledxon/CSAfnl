@@ -30,6 +30,8 @@ import javax.swing.Timer;
 
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
+	public static int start = 0;
+	
 	
 	JFrame frame;
 	private CardLayout cardLayout;
