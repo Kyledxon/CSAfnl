@@ -41,7 +41,7 @@ public class CuttingScreen extends GameScreen implements MouseListener{
     	Image pizzaImage = pizza.getImage();
 
     	//hi
-    	sprites.add(new Sprite(0, 0, bgImage, 1.0));
+    	sprites.add(new Sprite(0, 0, bgImage, 1.0)); //hey
 
     	sprites.add(new Sprite(90, 130, pizzaImage, .6));
     	
