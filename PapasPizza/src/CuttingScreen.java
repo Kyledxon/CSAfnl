@@ -68,6 +68,8 @@ public class CuttingScreen extends GameScreen implements MouseListener{
    	add(doneButton);
    	
    }
+	    
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
