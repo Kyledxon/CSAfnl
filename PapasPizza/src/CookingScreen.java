@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 
@@ -11,12 +10,14 @@ import java.util.Date;
 
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
 public class CookingScreen extends GameScreen {
-
+	private Timer stopwatchTimer;
+	private long elapsedMillis = 0;     // Tracks total elapsed time
+	private long lastStartTime = 0;     // Time when the stopwatch last resumed
+	private JLabel timeLabel = new JLabel(); // Label reused across screen shows
     public CookingScreen() {
     	
     }
@@ -41,30 +42,34 @@ public class CookingScreen extends GameScreen {
     	}
     	
     	
-    	 JFrame frame = new JFrame("Digital Clock");
-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         frame.setSize(300, 100);
-         frame.setLayout(new FlowLayout());
+    	// Setup and position label
+        timeLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        timeLabel.setForeground(Color.WHITE);
+        timeLabel.setBounds(800, 30, 200, 50);
+        add(timeLabel);
 
-         // Create a label to display time
-         JLabel timeLabel = new JLabel();
-         timeLabel.setFont(new Font("Arial", Font.BOLD, 30));
-         frame.add(timeLabel);
+        // Start/resume stopwatch
+        lastStartTime = System.currentTimeMillis();
 
-         // Format for time
-         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        if (stopwatchTimer == null) {
+            stopwatchTimer = new Timer(1000, new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    long totalTime = elapsedMillis + (System.currentTimeMillis() - lastStartTime);
+                    int seconds = (int) (totalTime / 1000) % 60;
+                    int minutes = (int) (totalTime / (1000 * 60));
+                    timeLabel.setText(String.format("%02d:%02d", minutes, seconds));
+                }
+            });
+        }
+        stopwatchTimer.start();
 
-         // Create a timer that updates the label every second
-         Timer timer = new Timer(1000, new ActionListener() {
-             public void actionPerformed(ActionEvent e) {
-                 String currentTime = timeFormat.format(new Date());
-                 timeLabel.setText(currentTime);
-             }
-         });
-         timer.start();
-
-         // Show the window
-         frame.setVisible(true);
+        repaint();
     	
+    }
+    public void onHide() {
+        if (stopwatchTimer != null) {
+            stopwatchTimer.stop();
+            elapsedMillis += System.currentTimeMillis() - lastStartTime;
+        }
     }
 }

@@ -134,4 +134,10 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	        g2d.draw(line);
 	    }
 	}
+
+	@Override
+	public void onHide() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -22,4 +22,5 @@ public abstract class GameScreen extends JPanel {
 
     // Each subclass can add sprites to this list as needed
     public abstract void onShow();
+    public abstract void onHide();
 }

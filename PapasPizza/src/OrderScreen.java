@@ -82,5 +82,11 @@ public class OrderScreen extends GameScreen {
         	width += 25;
         }
     }
+
+	@Override
+	public void onHide() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

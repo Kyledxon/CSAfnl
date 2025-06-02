@@ -42,6 +42,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
     public static ToppingScreen toppingsScreen = new ToppingScreen();
     private CookingScreen cookingScreen;
     private CuttingScreen cuttingScreen;
+    private GameScreen currentScreen;
 	
 	
 	private static boolean canOrder = true;
@@ -100,29 +101,37 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         
         JButton button1 = new JButton();
         button1.addActionListener(e -> {
-            cardLayout.show(cards, "Order Screen");
+        	if (currentScreen != null) currentScreen.onHide();
+        	cardLayout.show(cards, "Order Screen");
             orderScreen.onShow();
+            currentScreen = orderScreen;
         });
 
 
         JButton button2 = new JButton();
         button2.addActionListener(e -> {
-            cardLayout.show(cards, "Toppings Screen");
+        	if (currentScreen != null) currentScreen.onHide();
+        	cardLayout.show(cards, "Toppings Screen");
             toppingsScreen.onShow();
+            currentScreen = toppingsScreen;
         });
 
 
         JButton button3 = new JButton();
         button3.addActionListener(e -> {
-            cardLayout.show(cards, "Cooking Screen");
+        	if (currentScreen != null) currentScreen.onHide();
+        	cardLayout.show(cards, "Cooking Screen");
             cookingScreen.onShow();
+            currentScreen = cookingScreen;
         });
 
 
         JButton button4 = new JButton();
         button4.addActionListener(e -> {
-            cardLayout.show(cards, "Cutting Screen");
+        	if (currentScreen != null) currentScreen.onHide();
+        	cardLayout.show(cards, "Cutting Screen");
             cuttingScreen.onShow();
+            currentScreen = cuttingScreen;
         });
         
         //Start on order screen

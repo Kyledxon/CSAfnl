@@ -174,4 +174,10 @@ public class ToppingScreen extends GameScreen {
             sprite.draw(g2d); // toppings that you can move
         }
     }
+
+	@Override
+	public void onHide() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -6,8 +6,8 @@ public class Toppings {
 	
 	public Toppings() {
 		toppingsList.put("pepperoni", 0);
-		toppingsList.put("sausage", 0);
 		toppingsList.put("mushroom", 0);
+		toppingsList.put("onion", 0);
 		toppingsList.put("pepper", 0);
 		toppingsList.put("bacon", 0);
 		toppingsList.put("olive", 0);
@@ -21,8 +21,8 @@ public class Toppings {
 	}
 	public void resetList() {
 		toppingsList.put("pepperoni", 0);
-		toppingsList.put("sausage", 0);
 		toppingsList.put("mushroom", 0);
+		toppingsList.put("onion", 0);
 		toppingsList.put("pepper", 0);
 		toppingsList.put("bacon", 0);
 		toppingsList.put("olive", 0);
