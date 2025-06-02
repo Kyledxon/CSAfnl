@@ -28,7 +28,7 @@ public class ToppingScreen extends GameScreen {
     @Override
     public void onShow() {
         isDraggableScreen = true;
-        //Toppings toppings = new Toppings();
+        Toppings toppings = new Toppings();
 
         // Static table
         ImageIcon table = new ImageIcon("images/toppings table.png");
@@ -46,7 +46,7 @@ public class ToppingScreen extends GameScreen {
         Sprite2 olive = new Sprite2(847, 558, new ImageIcon("images/olive.png").getImage(), 0.25, "olive");
         Sprite2 onion = new Sprite2(322, 827, new ImageIcon("images/onion.png").getImage(), 0.25, "onion");
         Sprite2 pepper = new Sprite2(575, 823, new ImageIcon("images/pepper.png").getImage(), 0.25, "pepper");
-        Sprite2 pepperoni = new Sprite2(47, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25, "peperoni");
+        Sprite2 pepperoni = new Sprite2(47, 593, new ImageIcon("images/peperoni.png").getImage(), 0.25, "pepperoni");
        
         bacon.setVisible(false);
         mushroom.setVisible(false);
@@ -76,7 +76,8 @@ public class ToppingScreen extends GameScreen {
         	                clone.setVisible(true);
         	                draggableSprites.add(clone);
         	                draggingSprite = clone;
-        	                
+        	                toppings.incList(clone.getName());
+        	                toppings.printList();
         	            } else {
         	                // Existing visible sprite
         	                draggingSprite = s;

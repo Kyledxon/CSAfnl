@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public abstract class Toppings {
+public class Toppings {
 	
 	private HashMap<String, Integer> toppingsList = new HashMap<>();
 	
