@@ -10,8 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class OrderScreen extends GameScreen {
-	
-	private customer randCust = new customer();
+	private customer randCust= new customer();
 	String[] theOrder = randCust.printableString();
 	private Image custImage = randCust.getImageString().getImage();
     public OrderScreen() {
@@ -45,7 +44,6 @@ public class OrderScreen extends GameScreen {
 //
 //            return customers;
 //        }
-
     @Override
     public void onShow() {
         sprites.clear();
@@ -53,7 +51,15 @@ public class OrderScreen extends GameScreen {
         ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
     	Image pollosImage = pollos.getImage();
         sprites.add(new Sprite(0, 0, pollosImage));
-        sprites.add(new Sprite(800,550,custImage));
+        if (Game.start == 1) {
+            // When start changes to 1, reset customer and sprite
+            randCust = new customer();
+            custImage = randCust.getImageString().getImage();
+            theOrder = randCust.printableString();
+            Game.start = 0;  // Reset to 0 after updating
+        }
+        
+        sprites.add(new Sprite(800, 550, custImage));
         // After changing sprites, repaint so paintComponent is called
         repaint();
     }
@@ -76,4 +82,5 @@ public class OrderScreen extends GameScreen {
         	width += 25;
         }
     }
+    
 }
