@@ -44,6 +44,9 @@ public class CuttingScreen extends GameScreen implements MouseListener{
     	}
     	
     	
+    	addMouseListener(this);
+
+    	
     	
     }
 
@@ -92,6 +95,9 @@ public class CuttingScreen extends GameScreen implements MouseListener{
         	System.out.println("Bad Cut :(");
         }
         
+        
+        repaint();
+        
 	}
 
 	@Override
@@ -107,13 +113,10 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	}
 	
 	
-	public void paint(Graphics g) {
-		// Draw Grid
-		
-		g.setColor( new Color(255, 255, 255));
-		g.drawLine(startX, startY, endX, endY);
-		
-			
-			
-		}
+	@Override
+	protected void paintComponent(Graphics g) {
+	    super.paintComponent(g);  // Always call this first
+	    g.setColor(Color.WHITE);
+	    g.drawLine(startX, startY, endX, endY);
+	}
 }
