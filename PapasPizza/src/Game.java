@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -25,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.Timer;
+
 
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
@@ -49,12 +51,15 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	
 	
 
+
 	public static void main(String[] args) {
 		// Create an instance of the board
 		new Game();
 		
 
+
 	}
+
 
 	public Game() {
 		
@@ -67,20 +72,24 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         cookingScreen = new CookingScreen();
         cuttingScreen = new CuttingScreen();
 
+
         // Add the screens to the container with names
         cards.add(orderScreen, "Order Screen");
         cards.add(toppingsScreen, "Toppings Screen");
         cards.add(cookingScreen, "Cooking Screen");
         cards.add(cuttingScreen, "Cutting Screen");
 
+
         // Setup the JFrame
         frame.setUndecorated(true);
         frame.setSize(width, height);
         frame.add(cards);
 
+
         // Add buttons to switch screens
         
         JPanel buttonPanel = new JPanel();
+
 
         ImageIcon button1Icon = createCircularIcon("images/ordericon.png");
         ImageIcon button2Icon = createCircularIcon("images/toppings icon.png");
@@ -93,17 +102,20 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
             orderScreen.onShow();
         });
 
+
         JButton button2 = new JButton();
         button2.addActionListener(e -> {
             cardLayout.show(cards, "Toppings Screen");
             toppingsScreen.onShow();
         });
 
+
         JButton button3 = new JButton();
         button3.addActionListener(e -> {
             cardLayout.show(cards, "Cooking Screen");
             cookingScreen.onShow();
         });
+
 
         JButton button4 = new JButton();
         button4.addActionListener(e -> {
@@ -113,6 +125,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         
         //Start on order screen
         orderScreen.onShow();
+
 
         buttonPanel.add(button1);
         buttonPanel.add(button2);
@@ -126,12 +139,14 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         button1.setFocusPainted(false);
         button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
 
+
         
         button2.setIcon(button2Icon);
         button2.setBorderPainted(false);
         button2.setContentAreaFilled(false);
         button2.setFocusPainted(false);
         button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
+
 
         
         button3.setIcon(button3Icon);
@@ -140,12 +155,14 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         button3.setFocusPainted(false);
         button3.addActionListener(e -> cardLayout.show(cards, "Cooking Screen"));
 
+
         
         button4.setIcon(button4Icon);
         button4.setBorderPainted(false);
         button4.setContentAreaFilled(false);
         button4.setFocusPainted(false);
         button4.addActionListener(e -> cardLayout.show(cards, "Cutting Screen"));
+
 
         // Add buttons to the panel
         buttonPanel.add(button1);
@@ -172,6 +189,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
         int height = originalImage.getHeight(null);
         int diameter = Math.min(width, height);
 
+
         // Create a circular image
         Image circularImage = originalImage.getScaledInstance(diameter, diameter, Image.SCALE_SMOOTH);
         return circularImage;
@@ -185,8 +203,10 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		JMenuItem menuItem;
 		
 
+
 		//Create the menu bar.
 		menuBar = new JMenuBar();
+
 
 		//Build the first menu.
 		menu = new JMenu("Menu");
@@ -196,11 +216,14 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		menuBar.add(menu);
 
 
+
+
 		menuItem = new JMenuItem("Quit", new ImageIcon("images/middle.gif"));
 		menuItem.addActionListener( new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Define an array of custom options for the dialog
 		        Object[] options = { "Yes", "Cancel" };
+
 
 		        // Display an option dialog with custom options
 		        // The user's choice is stored in the 'choice'
@@ -215,6 +238,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		            options, // Custom options array
 		            options[1] // Initial selection (default is "Cancel")
 		        );
+
 
 		        // Check the user's choice and display a
 		        // corresponding message
@@ -239,13 +263,16 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	
 	
 
+
 	 
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -254,11 +281,13 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		
 	}
 
+
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -266,11 +295,13 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		
 	}
 
+
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
 	public void mouseExited(MouseEvent e) {
@@ -278,16 +309,19 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		
 	}
 
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
 	}
+
 
 	@Override
 	public void keyReleased(KeyEvent e) {
