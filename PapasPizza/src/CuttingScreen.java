@@ -58,14 +58,14 @@ public class CuttingScreen extends GameScreen implements MouseListener{
    	
    	addMouseListener(this);
    	if (doneButton == null) {
-           doneButton = new JButton("Done Cutting");
-           doneButton.setBounds(800, 30, 150, 40); // Position as needed
-           doneButton.addActionListener(e -> {
-           	orderScreen.onShow();
-           	cardLayout.show(cards, "Order Screen");
-           });
-       }
-       add(doneButton);
+   		doneButton = new JButton("Done Cutting");
+   		doneButton.setBounds(800, 30, 150, 40); // Position as needed
+   		doneButton.addActionListener(e -> {
+   			orderScreen.onShow();
+   			cardLayout.show(cards, "Order Screen");
+   		});
+   	}
+   	add(doneButton);
    	
    }
 	@Override
