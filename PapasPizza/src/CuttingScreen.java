@@ -104,6 +104,27 @@ public class CuttingScreen extends GameScreen implements MouseListener{
         	System.out.println("Bad Cut :(");
         }
         
+        //making sure we dont cut more than we want to 
+        if(endX > 670) {
+        	endX = 670;
+        }
+        if(startX > 670) {
+        	startX = 670;
+        }
+        
+        if(endY < 180) {
+        	endY = 180;
+        }
+        if(startY < 180) {
+        	startY = 180;
+        }
+        
+        if(endY > 520) {
+        	endY = 520;
+        }
+        if(endY < 520) {
+        	endY = 520;
+        }
         
         repaint();
         
@@ -127,13 +148,15 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 		super.paintComponent(g);
 
 	    Graphics2D g2d = (Graphics2D) g;
-	    g2d.setColor(Color.WHITE);
-	    g2d.setStroke(new BasicStroke(5)); // Thicker lines
+	    g2d.setColor(new Color(196, 194, 196)); // so same color as cutting board 
+	    g2d.setStroke(new BasicStroke(10)); // Thicker lines
 
 	    for (Line2D line : cutLines) {
 	        g2d.draw(line);
 	    }
 	}
+
+
 
 	@Override
 	public void onHide() {
