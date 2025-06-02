@@ -34,7 +34,7 @@ public class orders {
     	String line1 = "I would like a pizza with ";
     	String line2 = ""+this.getStringToppings();
     	String line3 = "baked for "+bakeTime + "s";
-    	String line4 = "and with "+numCuts+" cuts please!";
+    	String line4 = "and with "+numCuts+" slices please!";
     	
     	return line1 +"\n"+ line2+"\n"+ line3+"\n"+line4;
     	
