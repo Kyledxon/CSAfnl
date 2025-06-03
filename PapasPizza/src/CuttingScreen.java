@@ -1,6 +1,7 @@
 import java.awt.BasicStroke;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,6 +19,13 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private CardLayout cardLayout;
 	private JPanel cards;
 	private GameScreen orderScreen;
+	private int score; 
+	private boolean goodCut; 
+	private JLabel tip = new JLabel();
+	private customer cust = OrderScreen.getRandCust();
+	private int numCutsNeeded;
+	private int cutsDone;
+	private int numBadCuts;
    public CuttingScreen() {
   
    }
@@ -26,14 +34,14 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
        this.cards = cards;
        this.orderScreen = orderScreen;
    }
-	 	int numCutsNeeded;
+	 	
 	    int deltaX;
 	    int deltaY;
 	    int startX;
 	    int endX;
 	    int startY;
 	    int endY;
-	    int cutsDone;
+	    
 	    
 	    private boolean isDragging = false;
 	    private int dragEndX;
@@ -74,6 +82,12 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	add(doneButton);
    	addMouseMotionListener(this);
    	
+   	tip.setFont(new Font("Arial", Font.BOLD, 20));
+    tip.setForeground(Color.WHITE);
+    tip.setBounds(800, 30, 200, 50);
+    add(tip);
+    tip.setText(String.format("Make sure to always make cuts horizontal or vertical!"));
+   	
    }
 	    
 
@@ -107,20 +121,24 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
        endX = x;
        endY = y;
        cutsDone++;
-       deltaX = endX - startX;
-       deltaY = endY - startY;
+       deltaX = Math.abs(endX - startX);
+       deltaY = Math.abs(endY - startY);
       
        cutLines.add(new Line2D.Float(startX, startY, endX, endY));
       
        if(deltaY <= 20 && deltaX >= 100) {
        	//horizontal cut
        	System.out.println("Good Cut!");
+       	goodCut = true;
        } else if(deltaY >= 100 && deltaX <= 20) {
        	//vertical cut
        	System.out.println("Good Cut!");
+       	goodCut = true;
        }else {
        	//bad cut smh
        	System.out.println("Bad Cut :(");
+       	goodCut = false;
+       	numBadCuts++;
        }
       
        isDragging = false;
@@ -174,4 +192,11 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getScore() {
+		
+		
+		return (100 - 10*(Math.abs(cust.getNumCuts() - cutsDone)) - 10*(numBadCuts));
+	}
+	
 }
