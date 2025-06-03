@@ -16,6 +16,9 @@ public class customer {
     		"people/random1.png","people/salamanca twins.png","people/saul.png","people/tio.png",
     		"people/tortuga.png","people/tuco.png","people/tucos henchmen.png","people/walt.png"};
     
+    private int bakeTime;
+    private int numCuts;
+    
     
     public customer(int posX, int posY, String nm, ImageIcon im) {
         this.orders = new ArrayList<>();
@@ -82,13 +85,21 @@ public class customer {
             }
         }
 
-        int bakeTime = 10 + rand.nextInt(11); // 10 to 20 seconds
-        int numCuts = (rand.nextInt(2) + 1) * 2; // 2 or 4 slices 
+        bakeTime = 10 + rand.nextInt(11); // 10 to 20 seconds
+        numCuts = (rand.nextInt(2) + 1) * 2; // 2 or 4 slices 
 
         return new orders(selectedToppings, bakeTime, numCuts);
     }
     
-    public String[] printableString() {
+    public int getBakeTime() {
+		return bakeTime;
+	}
+
+	public int getNumCuts() {
+		return numCuts;
+	}
+
+	public String[] printableString() {
     	String theString = this.placeOrder();
     	String[] lines = theString.split("\n");
     		
