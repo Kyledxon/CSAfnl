@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
@@ -52,7 +53,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	public static void main(String[] args) {
 		// Create an instance of the board
 		new Game();
-		
+		//SwingUtilities.invokeLater(DraggableFrame::new);
 	}
 	public Game() {
 		
@@ -70,7 +71,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
        cards.add(cookingScreen, "Cooking Screen");
        cards.add(cuttingScreen, "Cutting Screen");
        // Setup the JFrame
-       frame.setUndecorated(true);
+       frame.setUndecorated(false);
        frame.setSize(width, height);
        frame.add(cards);
        // Add buttons to switch screens

@@ -6,13 +6,14 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-public class CuttingScreen extends GameScreen implements MouseListener{
+public class CuttingScreen extends GameScreen implements MouseListener, MouseMotionListener{
 	
 	private CardLayout cardLayout;
 	private JPanel cards;
@@ -33,6 +34,11 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	    int startY;
 	    int endY;
 	    int cutsDone;
+	    
+	    private boolean isDragging = false;
+	    private int dragEndX;
+	    private int dragEndY;
+
 	   
 	    private ArrayList<Line2D> cutLines = new ArrayList<>();
 	    private JButton doneButton;
@@ -66,6 +72,7 @@ public class CuttingScreen extends GameScreen implements MouseListener{
    		});
    	}
    	add(doneButton);
+   	addMouseMotionListener(this);
    	
    }
 	    
@@ -93,6 +100,7 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
 		int x = e.getX();
        int y = e.getY();
        System.out.println("Mouse released at: (" + x + ", " + y + ")");
@@ -115,6 +123,7 @@ public class CuttingScreen extends GameScreen implements MouseListener{
        	System.out.println("Bad Cut :(");
        }
       
+       isDragging = false;
       
        repaint();
       
@@ -135,14 +144,34 @@ public class CuttingScreen extends GameScreen implements MouseListener{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	    Graphics2D g2d = (Graphics2D) g;
-	    g2d.setColor(Color.WHITE);
-	    g2d.setStroke(new BasicStroke(5)); // Thicker lines
+	    g2d.setColor(new Color(196, 194, 196)); // so same color as cutting board Add commentMore actions
+	    g2d.setStroke(new BasicStroke(10)); // Thicker lines
 	    for (Line2D line : cutLines) {
 	        g2d.draw(line);
+	    }
+	    
+	    if(isDragging) {
+	        g2d.setColor(Color.RED); // Or any contrasting color
+	        g2d.setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f, new float[]{10}, 0)); // Dashed line
+	        g2d.drawLine(startX, startY, dragEndX, dragEndY);
 	    }
 	}
 	@Override
 	public void onHide() {
+		
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		isDragging = true;
+		dragEndX = e.getX();
+		dragEndY = e.getY();
+		repaint();
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }
