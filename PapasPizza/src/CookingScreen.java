@@ -17,7 +17,10 @@ public class CookingScreen extends GameScreen {
 	private Timer stopwatchTimer;
 	private long elapsedMillis = 0;     // Tracks total elapsed time
 	private long lastStartTime = 0;     // Time when the stopwatch last resumed
+	private int seconds;
 	private JLabel timeLabel = new JLabel(); // Label reused across screen shows
+	private customer cust = OrderScreen.getRandCust();
+	
     public CookingScreen() {
     	
     }
@@ -55,9 +58,8 @@ public class CookingScreen extends GameScreen {
             stopwatchTimer = new Timer(1000, new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     long totalTime = elapsedMillis + (System.currentTimeMillis() - lastStartTime);
-                    int seconds = (int) (totalTime / 1000) % 60;
-                    int minutes = (int) (totalTime / (1000 * 60));
-                    timeLabel.setText(String.format("%02d:%02d", minutes, seconds));
+                    seconds = (int) (totalTime / 1000) % 60;
+                    timeLabel.setText(String.format("Time: %02d", seconds));
                 }
             });
         }
@@ -71,5 +73,9 @@ public class CookingScreen extends GameScreen {
             stopwatchTimer.stop();
             elapsedMillis += System.currentTimeMillis() - lastStartTime;
         }
+    }
+    
+    public int getScore() {
+    	return 100-5*(Math.abs(cust.getBakeTime()-seconds));
     }
 }
