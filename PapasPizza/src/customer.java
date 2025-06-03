@@ -104,12 +104,6 @@ public class customer {
 		return numCuts;
 	}
 
-	public String[] printableString() {
-    	String theString = this.placeOrder();
-    	String[] lines = theString.split("\n");
-    		
-    	return lines;
-    }
     public String getName() {
         return name;
     }
