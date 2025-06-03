@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -66,26 +67,51 @@ public class OrderScreen extends GameScreen {
         // After changing sprites, repaint so paintComponent is called
         repaint();
     }
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        Graphics2D g2d = (Graphics2D) g; // Cast Graphics to Graphics2D
+        Graphics2D g2d = (Graphics2D) g;
         for (Sprite sprite : sprites) {
-            sprite.draw(g2d); // Call the draw method of the sprite which handles scaling
+            sprite.draw(g2d);
         }
+
         g.setColor(Color.white);
-        g.fillRect(620, 475, 380, 120);
+        g.fillRect(620, 475, 380, 120); // box dimensions
+
         g.setColor(Color.black);
         Font theFont = new Font("Arial", Font.BOLD, 20);
         g.setFont(theFont);
-        int width = 0;
-        for(String it : theOrder) {
-        	g.drawString(it, 630, 500+width);
-        	width += 25;
+
+        FontMetrics fm = g.getFontMetrics();
+        int lineHeight = fm.getHeight();
+        int maxWidth = 360; // Max width for text inside the box (380 - 20 padding)
+
+        int x = 630;
+        int y = 500;
+
+        for (String line : theOrder) {
+            String[] words = line.split(" ");
+            StringBuilder currentLine = new StringBuilder();
+
+            for (String word : words) {
+                String testLine = currentLine + word + " ";
+                int testWidth = fm.stringWidth(testLine);
+                if (testWidth > maxWidth) {
+                    g.drawString(currentLine.toString(), x, y);
+                    y += lineHeight;
+                    currentLine = new StringBuilder(word + " ");
+                } else {
+                    currentLine.append(word).append(" ");
+                }
+            }
+
+            // Draw any remaining words in the line
+            g.drawString(currentLine.toString(), x, y);
+            y += lineHeight;
         }
     }
-
 	@Override
 	public void onHide() {
 		// TODO Auto-generated method stub
