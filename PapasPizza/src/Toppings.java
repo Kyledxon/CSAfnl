@@ -1,26 +1,26 @@
 import java.util.HashMap;
+import java.util.List;
 
 public class Toppings {
 	
 	private HashMap<String, Integer> toppingsList = new HashMap<>();
 	private HashMap<String, Integer> checkerList = new HashMap<>();
+	private customer theCust = OrderScreen.getRandCust();
 	public Toppings() {
 		toppingsList.put("pepperoni", 0);
 		toppingsList.put("mushroom", 0);
 		toppingsList.put("onion", 0);
 		toppingsList.put("pepper", 0);
-		toppingsList.put("sausage", 0);
 		toppingsList.put("bacon", 0);
 		toppingsList.put("olive", 0);
 		
 		
-		checkerList.put("pepperoni", customer.randTopAmt.get(0));
-		checkerList.put("mushroom", customer.randTopAmt.get(1));
-		checkerList.put("onion", customer.randTopAmt.get(2));
-		checkerList.put("pepper", customer.randTopAmt.get(3));
-		checkerList.put("sausage", customer.randTopAmt.get(4));
-		checkerList.put("bacon", customer.randTopAmt.get(5));
-		checkerList.put("olive", customer.randTopAmt.get(6));
+		checkerList.put("pepperoni", theCust.randTopAmt.get(0));
+		checkerList.put("mushroom", theCust.randTopAmt.get(1));
+		checkerList.put("onion", theCust.randTopAmt.get(2));
+		checkerList.put("pepper", theCust.randTopAmt.get(3));
+		checkerList.put("bacon", theCust.randTopAmt.get(4));
+		checkerList.put("olive", theCust.randTopAmt.get(5));
 	}
 	
 	public HashMap<String, Integer> getList(){
@@ -34,7 +34,6 @@ public class Toppings {
 		toppingsList.put("mushroom", 0);
 		toppingsList.put("onion", 0);
 		toppingsList.put("pepper", 0);
-		toppingsList.put("sausage", 0);
 		toppingsList.put("bacon", 0);
 		toppingsList.put("olive", 0);
 	}
@@ -42,5 +41,28 @@ public class Toppings {
 		toppingsList.forEach((key, value) -> System.out.println(key + " -> " + value));
 		System.out.println();
 		checkerList.forEach((key, value) -> System.out.println(key + " -> " + value));
+		System.out.println(checkList());
+	}
+	
+	public boolean checkList() {
+		HashMap<String, Integer> requiredMap = new HashMap<>();
+		for(String name: theCust.selectedToppings) {
+			String[] parts = name.split(" ", 2);
+			int quantity = Integer.parseInt(parts[0]);
+			String topping = parts[1].toLowerCase();
+			topping = topping.substring(0, topping.length() - 1);
+			
+			requiredMap.put(topping, quantity);
+		}
+		
+		for (String top : requiredMap.keySet()) {
+			if (!toppingsList.containsKey(top.toLowerCase())) {
+				return false;
+			}
+			if(!toppingsList.get(top.toLowerCase()).equals(requiredMap.get(top.toLowerCase()))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
