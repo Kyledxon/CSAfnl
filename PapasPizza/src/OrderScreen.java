@@ -10,11 +10,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class OrderScreen extends GameScreen {
-	private customer randCust= new customer();
+	private static customer randCust= new customer();
 	String[] theOrder = randCust.printableString();
 	private Image custImage = randCust.getImageString().getImage();
     public OrderScreen() {
     	
+    }
+    public static customer getRandCust() {
+    	return randCust;
     }
     
 //    public class CustomerLoader {
