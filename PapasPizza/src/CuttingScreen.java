@@ -26,13 +26,16 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private int numCutsNeeded;
 	private int cutsDone;
 	private int numBadCuts;
+	private Game game;
+	
    public CuttingScreen() {
   
    }
-   public CuttingScreen(CardLayout cardLayout, JPanel cards, GameScreen orderScreen) {
+   public CuttingScreen(CardLayout cardLayout, JPanel cards, GameScreen orderScreen, Game game) {
        this.cardLayout = cardLayout;
        this.cards = cards;
        this.orderScreen = orderScreen;
+       this.game = game;
    }
 	 	
 	    int deltaX;
@@ -77,6 +80,8 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    		doneButton.addActionListener(e -> {
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
+   			game.getScore();
+   			game.setMoney();
    		});
    	}
    	add(doneButton);

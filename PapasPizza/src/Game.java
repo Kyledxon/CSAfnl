@@ -65,7 +65,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		orderScreen = new OrderScreen();
 	   toppingsScreen = new ToppingScreen();
 	   cookingScreen = new CookingScreen();
-	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen); // new
+	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen, this); // new
 	   // Add the screens to the container with names
 	   cards.add(orderScreen, "Order Screen");
 	   cards.add(toppingsScreen, "Toppings Screen");
@@ -157,11 +157,14 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	}
 	
 	public int getScore() {
-		return (cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
+		System.out.println(toppingsScreen.checkList());
+		System.out.println(cookingScreen.getScore());
+		System.out.println(cuttingScreen.getScore());
+		return (toppingsScreen.checkList() + cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
 	}
 	
 	public void setMoney() {
-		
+		money += this.getScore()*10;
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
