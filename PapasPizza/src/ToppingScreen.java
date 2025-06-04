@@ -190,7 +190,7 @@ public class ToppingScreen extends GameScreen {
 
 	        requiredMap.put(topping, quantity);
 	    }
-
+//
 	    int correctUnits = 0;
 	    int penaltyUnits = 0;
 	    int totalRequiredUnits = 0;
