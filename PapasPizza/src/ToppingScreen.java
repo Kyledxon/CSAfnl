@@ -6,13 +6,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class ToppingScreen extends GameScreen {
-	
-	
+	private customer theCust = OrderScreen.getRandCust();
+	private HashMap<String, Integer> toppingsList = new HashMap<>();
 	private ArrayList<Sprite2> draggableSprites = new ArrayList<>(); // only these can be moved
 	private ArrayList<Sprite2> infiniteSources = new ArrayList<>(); //tester
 
@@ -174,6 +175,59 @@ public class ToppingScreen extends GameScreen {
             sprite.draw(g2d); // toppings that you can move
         }
     }
+    
+
+	public int checkList() {
+	    HashMap<String, Integer> requiredMap = new HashMap<>();
+	    for (String name : theCust.selectedToppings) {
+	        String[] parts = name.split(" ", 2);
+	        int quantity = Integer.parseInt(parts[0]);
+	        String topping = parts[1].toLowerCase();
+
+	        if (topping.endsWith("s")) {
+	            topping = topping.substring(0, topping.length() - 1);
+	        }
+
+	        requiredMap.put(topping, quantity);
+	    }
+
+	    int correctUnits = 0;
+	    int penaltyUnits = 0;
+	    int totalRequiredUnits = 0;
+
+	    // Count correct and penalty units
+	    for (String topping : requiredMap.keySet()) {
+	        int requiredQty = requiredMap.get(topping);
+	        int placedQty = toppingsList.getOrDefault(topping, 0);
+
+	        totalRequiredUnits += requiredQty;
+
+	        if (placedQty <= requiredQty) {
+	            correctUnits += placedQty;
+	        } else {
+	            correctUnits += requiredQty;
+	            penaltyUnits += (placedQty - requiredQty); // Extra units
+	        }
+	    }
+
+	    for (String placedTop : toppingsList.keySet()) {
+	        if (!requiredMap.containsKey(placedTop)) {
+	            penaltyUnits += toppingsList.get(placedTop); // All units are extra
+	        }
+	    }
+
+	    if (totalRequiredUnits == 0) {
+	    	return 0;
+	    }
+	    int score = (int)(100.0 * correctUnits / totalRequiredUnits) - 10*penaltyUnits;
+	    if (score < 0) {
+	    	return 0;
+	    }
+	    if (score > 100) {
+	    	return 100;
+	    }
+	    return score;
+	}
 
 	@Override
 	public void onHide() {
