@@ -14,6 +14,8 @@ public class OrderScreen extends GameScreen {
 	private static customer randCust= new customer();
 	String[] theOrder = randCust.printableString();
 	private Image custImage = randCust.getImageString().getImage();
+	private JLabel moneyText = new JLabel();
+	
     public OrderScreen() {
     	
     }
@@ -65,6 +67,14 @@ public class OrderScreen extends GameScreen {
         
         sprites.add(new Sprite(800, 550, custImage));
         // After changing sprites, repaint so paintComponent is called
+        
+        setLayout(null);
+        moneyText.setFont(new Font("Arial", Font.BOLD, 100));
+        moneyText.setForeground(Color.WHITE);
+        moneyText.setBounds(50, 10, 500, 100);
+        moneyText.setText(String.valueOf(Game.money));
+        add(moneyText);
+        
         repaint();
     }
     

@@ -48,7 +48,6 @@ public class CookingScreen extends GameScreen {
     	// Setup and position label
         timeLabel.setFont(new Font("Arial", Font.BOLD, 28));
         timeLabel.setForeground(Color.WHITE);
-        timeLabel.setBounds(800, 30, 200, 50);
         add(timeLabel);
 
         // Start/resume stopwatch

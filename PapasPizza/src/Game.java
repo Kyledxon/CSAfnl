@@ -40,9 +40,8 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private CookingScreen cookingScreen;
 	private CuttingScreen cuttingScreen;
 	private GameScreen currentScreen;
+	public static int money = 10000;
 	
-	
-	private static boolean canOrder = true;
 	
 	ArrayList<customer> Customers = new ArrayList<customer>();
 	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("negroyazul.wav", true);
@@ -56,83 +55,85 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		//SwingUtilities.invokeLater(DraggableFrame::new);
 	}
 	public Game() {
-		
+	
 		frame = new JFrame("Los Pollos Hermanos");
-       cardLayout = new CardLayout();
-       cards = new JPanel(cardLayout);
-      
-       orderScreen = new OrderScreen();
-       toppingsScreen = new ToppingScreen();
-       cookingScreen = new CookingScreen();
-       cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen); // new
-       // Add the screens to the container with names
-       cards.add(orderScreen, "Order Screen");
-       cards.add(toppingsScreen, "Toppings Screen");
-       cards.add(cookingScreen, "Cooking Screen");
-       cards.add(cuttingScreen, "Cutting Screen");
-       // Setup the JFrame
-       frame.setUndecorated(false);
-       frame.setSize(width, height);
-       frame.add(cards);
-       // Add buttons to switch screens
-      
-       JPanel buttonPanel = new JPanel();
-       ImageIcon button1Icon = createCircularIcon("images/ordericon.png");
-       ImageIcon button2Icon = createCircularIcon("images/toppings icon.png");
-       ImageIcon button3Icon = createCircularIcon("images/cooking icon.png");
-       ImageIcon button4Icon = createCircularIcon("images/new cutter.png");
-      
-       JButton button1 = new JButton();
-       button1.addActionListener(e -> {
-       	if (currentScreen != null) currentScreen.onHide();
-       	cardLayout.show(cards, "Order Screen");
-           orderScreen.onShow();
-           currentScreen = orderScreen;
-       });
-       JButton button2 = new JButton();
-       button2.addActionListener(e -> {
-       	if (currentScreen != null) currentScreen.onHide();
-       	cardLayout.show(cards, "Toppings Screen");
-           toppingsScreen.onShow();
-           currentScreen = toppingsScreen;
-       });
-       JButton button3 = new JButton();
-       button3.addActionListener(e -> {
-       	if (currentScreen != null) currentScreen.onHide();
-       	cardLayout.show(cards, "Cooking Screen");
-           cookingScreen.onShow();
-           currentScreen = cookingScreen;
-       });
-       JButton button4 = new JButton();
-       button4.addActionListener(e -> {
-       	if (currentScreen != null) currentScreen.onHide();
-       	cardLayout.show(cards, "Cutting Screen");
-           cuttingScreen.onShow();
-           currentScreen = cuttingScreen;
-       });
-      
-       //Start on order screen
-       orderScreen.onShow();
-       buttonPanel.add(button1);
-       buttonPanel.add(button2);
-       buttonPanel.add(button3);
-       buttonPanel.add(button4);
-       add(buttonPanel, BorderLayout.SOUTH);
-       // Create the buttons and set the icons
-       button1.setIcon(button1Icon);
-       button1.setBorderPainted(false);
-       button1.setContentAreaFilled(false);
-       button1.setFocusPainted(false);
-       button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
-      
-       button2.setIcon(button2Icon);
-       button2.setBorderPainted(false);
-       button2.setContentAreaFilled(false);
-       button2.setFocusPainted(false);
-       button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
-      
-       button3.setIcon(button3Icon);
-       button3.setBorderPainted(false);
+		cardLayout = new CardLayout();
+		cards = new JPanel(cardLayout);
+		
+		
+	  
+	   orderScreen = new OrderScreen();
+	   toppingsScreen = new ToppingScreen();
+	   cookingScreen = new CookingScreen();
+	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen); // new
+	   // Add the screens to the container with names
+	   cards.add(orderScreen, "Order Screen");
+	   cards.add(toppingsScreen, "Toppings Screen");
+	   cards.add(cookingScreen, "Cooking Screen");
+	   cards.add(cuttingScreen, "Cutting Screen");
+	   // Setup the JFrame
+	   frame.setUndecorated(false);
+	   frame.setSize(width, height);
+	   frame.add(cards);
+	   // Add buttons to switch screens
+	  
+	   JPanel buttonPanel = new JPanel();
+	   ImageIcon button1Icon = createCircularIcon("images/ordericon.png");
+	   ImageIcon button2Icon = createCircularIcon("images/toppings icon.png");
+	   ImageIcon button3Icon = createCircularIcon("images/cooking icon.png");
+	   ImageIcon button4Icon = createCircularIcon("images/new cutter.png");
+	  
+	   JButton button1 = new JButton();
+	   button1.addActionListener(e -> {
+	   	if (currentScreen != null) currentScreen.onHide();
+	   	cardLayout.show(cards, "Order Screen");
+	       orderScreen.onShow();
+	       currentScreen = orderScreen;
+	   });
+	   JButton button2 = new JButton();
+	   button2.addActionListener(e -> {
+	   	if (currentScreen != null) currentScreen.onHide();
+	   	cardLayout.show(cards, "Toppings Screen");
+	       toppingsScreen.onShow();
+	       currentScreen = toppingsScreen;
+	   });
+	   JButton button3 = new JButton();
+	   button3.addActionListener(e -> {
+	   	if (currentScreen != null) currentScreen.onHide();
+	   	cardLayout.show(cards, "Cooking Screen");
+	       cookingScreen.onShow();
+	       currentScreen = cookingScreen;
+	   });
+	   JButton button4 = new JButton();
+	   button4.addActionListener(e -> {
+	   	if (currentScreen != null) currentScreen.onHide();
+	   	cardLayout.show(cards, "Cutting Screen");
+	       cuttingScreen.onShow();
+	       currentScreen = cuttingScreen;
+	   });
+	  
+	   //Start on order screen
+	   orderScreen.onShow();
+	   buttonPanel.add(button1);
+	   buttonPanel.add(button2);
+	   buttonPanel.add(button3);
+	   buttonPanel.add(button4);
+	   add(buttonPanel, BorderLayout.SOUTH);
+	   // Create the buttons and set the icons
+	   button1.setIcon(button1Icon);
+	   button1.setBorderPainted(false);
+	   button1.setContentAreaFilled(false);
+	   button1.setFocusPainted(false);
+	   button1.addActionListener(e -> cardLayout.show(cards, "Order Screen"));
+	  
+	   button2.setIcon(button2Icon);
+	   button2.setBorderPainted(false);
+	   button2.setContentAreaFilled(false);
+	   button2.setFocusPainted(false);
+	   button2.addActionListener(e -> cardLayout.show(cards, "Toppings Screen"));
+	  
+	   button3.setIcon(button3Icon);
+	   button3.setBorderPainted(false);
        button3.setContentAreaFilled(false);
        button3.setFocusPainted(false);
        button3.addActionListener(e -> cardLayout.show(cards, "Cooking Screen"));
@@ -153,6 +154,10 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
        // Show the frame
        frame.setVisible(true);
       
+	}
+	
+	public int getScore() {
+		return (cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
