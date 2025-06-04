@@ -83,8 +83,8 @@ public class customer {
             }
         }
 
-        int bakeTime = 10 + rand.nextInt(11); // 10 to 20 seconds
-        int numCuts = (rand.nextInt(2) + 1) * 2; // 2 or 4 slices 
+        bakeTime = 10 + rand.nextInt(11); // 10 to 20 seconds
+        numCuts = (rand.nextInt(2) + 1) * 2; // 2 or 4 slices 
 
         return new orders(selectedToppings, bakeTime, numCuts);
     }
