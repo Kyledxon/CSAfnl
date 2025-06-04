@@ -44,25 +44,55 @@ public class Toppings {
 		System.out.println(checkList());
 	}
 	
-	public boolean checkList() {
-		HashMap<String, Integer> requiredMap = new HashMap<>();
-		for(String name: theCust.selectedToppings) {
-			String[] parts = name.split(" ", 2);
-			int quantity = Integer.parseInt(parts[0]);
-			String topping = parts[1].toLowerCase();
-			topping = topping.substring(0, topping.length() - 1);
-			
-			requiredMap.put(topping, quantity);
-		}
-		
-		for (String top : requiredMap.keySet()) {
-			if (!toppingsList.containsKey(top.toLowerCase())) {
-				return false;
-			}
-			if(!toppingsList.get(top.toLowerCase()).equals(requiredMap.get(top.toLowerCase()))) {
-				return false;
-			}
-		}
-		return true;
+	public int checkList() {
+	    HashMap<String, Integer> requiredMap = new HashMap<>();
+	    for (String name : theCust.selectedToppings) {
+	        String[] parts = name.split(" ", 2);
+	        int quantity = Integer.parseInt(parts[0]);
+	        String topping = parts[1].toLowerCase();
+
+	        if (topping.endsWith("s")) {
+	            topping = topping.substring(0, topping.length() - 1);
+	        }
+
+	        requiredMap.put(topping, quantity);
+	    }
+
+	    int correctUnits = 0;
+	    int penaltyUnits = 0;
+	    int totalRequiredUnits = 0;
+
+	    // Count correct and penalty units
+	    for (String topping : requiredMap.keySet()) {
+	        int requiredQty = requiredMap.get(topping);
+	        int placedQty = toppingsList.getOrDefault(topping, 0);
+
+	        totalRequiredUnits += requiredQty;
+
+	        if (placedQty <= requiredQty) {
+	            correctUnits += placedQty;
+	        } else {
+	            correctUnits += requiredQty;
+	            penaltyUnits += (placedQty - requiredQty); // Extra units
+	        }
+	    }
+
+	    for (String placedTop : toppingsList.keySet()) {
+	        if (!requiredMap.containsKey(placedTop)) {
+	            penaltyUnits += toppingsList.get(placedTop); // All units are extra
+	        }
+	    }
+
+	    if (totalRequiredUnits == 0) {
+	    	return 0;
+	    }
+	    int score = (int)(100.0 * correctUnits / totalRequiredUnits) - 10*penaltyUnits;
+	    if (score < 0) {
+	    	return 0;
+	    }
+	    if (score > 100) {
+	    	return 100;
+	    }
+	    return score;
 	}
 }
