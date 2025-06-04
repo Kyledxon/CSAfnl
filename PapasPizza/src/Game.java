@@ -40,7 +40,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private CookingScreen cookingScreen;
 	private CuttingScreen cuttingScreen;
 	private GameScreen currentScreen;
-	public static int money = 10000;
+	public static int money = 0;
 	
 	
 	ArrayList<customer> Customers = new ArrayList<customer>();
@@ -158,6 +158,10 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	
 	public int getScore() {
 		return (cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
+	}
+	
+	public void setMoney() {
+		
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
