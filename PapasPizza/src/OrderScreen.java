@@ -126,6 +126,5 @@ public class OrderScreen extends GameScreen {
 	public void onHide() {
 		// TODO Auto-generated method stub
 		
-	}
-    
+	}  
 }

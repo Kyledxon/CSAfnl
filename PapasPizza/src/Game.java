@@ -62,7 +62,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		
 		
 	  
-	   orderScreen = new OrderScreen();
+		orderScreen = new OrderScreen();
 	   toppingsScreen = new ToppingScreen();
 	   cookingScreen = new CookingScreen();
 	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen); // new

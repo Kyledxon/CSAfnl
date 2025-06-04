@@ -44,7 +44,6 @@ public class CookingScreen extends GameScreen {
     		sprites.add(new Sprite((int)(140 + (topping.getX() - 200)/1.37), (int)(208 + (topping.getY() - 100)/1.37), topping.getImage(), topping.getScale()/1.37));
     	}
     	
-    	
     	// Setup and position label
         timeLabel.setFont(new Font("Arial", Font.BOLD, 28));
         timeLabel.setForeground(Color.WHITE);
