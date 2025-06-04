@@ -57,7 +57,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	ArrayList<Sprite2> placedToppings = Game.toppingsScreen.getPlacedToppings();
    	
    	sprites.clear();
-   	ImageIcon bg = new ImageIcon("images/cutting-pixel.png");
+   	ImageIcon bg = new ImageIcon("images/cutting-big.png");
    	Image bgImage = bg.getImage();
        ImageIcon pizza = new ImageIcon("images/pizza crust1.png");
    	Image pizzaImage = pizza.getImage();
@@ -73,7 +73,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	addMouseListener(this);
    	if (doneButton == null) {
    		doneButton = new JButton("Done Cutting");
-   		doneButton.setBounds(800, 30, 150, 40); // Position as needed
+   		doneButton.setBounds(800, 30, 150, 40); // Position as neededs
    		doneButton.addActionListener(e -> {
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
