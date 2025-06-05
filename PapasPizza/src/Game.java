@@ -165,10 +165,6 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		return score;
 	}
 	
-	public void setMoney() {
-		money += this.getScore()*10;
-	}
-	
 	private ImageIcon createCircularIcon(String imagePath) {
        ImageIcon icon = new ImageIcon(imagePath);
        Image image = icon.getImage(); // Get the image from the icon

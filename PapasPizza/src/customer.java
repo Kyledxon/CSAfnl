@@ -44,7 +44,6 @@ public class customer {
     	}
     	return randTopAmt;
     }
-
     public String placeOrder() {
         // Simulate customer walking to counter
     	
