@@ -28,7 +28,7 @@ import javax.swing.Timer;
 public class Game extends JFrame implements MouseListener, ActionListener, KeyListener{
 	
 	public static int start = 0;
-	
+	public static int amt;
 	
 	JFrame frame;
 	private CardLayout cardLayout;
@@ -156,6 +156,9 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
        frame.setVisible(true);
       
 	}
+	public static int getAmt() {
+		return amt;
+	}
 	
 	public int getScore() {
 		int score = (Toppings.getTheScore() + cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
@@ -168,7 +171,8 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	        SimpleAudioPlayer cashSound = new SimpleAudioPlayer("cash sounds.wav", true);
 	        hasPlayed = false;
 	    }
-
+	
+	amt = score;
 	    return score;
 		
 	}
