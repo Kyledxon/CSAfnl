@@ -15,7 +15,7 @@ public class OrderScreen extends GameScreen {
 	String[] theOrder = randCust.printableString();
 	private Image custImage = randCust.getImageString().getImage();
 	private JLabel moneyText = new JLabel();
-	
+	public static boolean showFinalBox = false;
     public OrderScreen() {
     	
     }
@@ -126,6 +126,35 @@ public class OrderScreen extends GameScreen {
             g.drawString(currentLine.toString(), x, y);
             y += lineHeight;
         }
+        
+        if(showFinalBox) {
+	    	g.setColor(Color.white);
+	        g.fillRect(620, 475, 380, 120); // box dimensions
+
+	        g.setColor(Color.black);
+	        Font theFont1 = new Font("Arial", Font.BOLD, 20);
+	        g.setFont(theFont1);
+
+	        FontMetrics fm1 = g.getFontMetrics();
+	        int lineHeight1 = fm.getHeight();
+	        int maxWidth1 = 360; // Max width for text inside the box (380 - 20 padding)
+
+	        int x1 = 630;
+	        int y1 = 500;
+	        
+	        g.drawString(String.valueOf(Toppings.getTheScore()), x1, y1);
+	        y1 += lineHeight;
+	        g.drawString(String.valueOf(CookingScreen.it), x1, y1);
+	        y1 += lineHeight;
+	        g.drawString(String.valueOf(CuttingScreen.thescore), x1, y1);
+	        y1 += lineHeight;
+	        g.drawString("Total Score is:", x1, y1);
+	        y1 += lineHeight;
+	        g.drawString("-----------------", x1, y1);
+	        y1 += lineHeight;
+	        g.drawString(String.valueOf(Game.getAmt()), x1, y1);
+	        y1 += lineHeight;
+	    }
     }
 	@Override
 	public void onHide() {
