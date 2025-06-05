@@ -26,12 +26,9 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private int numCutsNeeded;
 	private int cutsDone;
 	private int numBadCuts;
-
-	private int points = 100;
 	private Game game;
     private JButton doneButton;
 	
-
    public CuttingScreen() {
   
    }
@@ -78,13 +75,13 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	
    	addMouseListener(this);
    	if (doneButton == null) {
-   		ImageIcon gifIcon = new ImageIcon("images/pixil-gif-drawing.gif");
+   		ImageIcon gifIcon = new ImageIcon("images/realButton.gif");
    		setLayout(null);
    		doneButton = new JButton(gifIcon);
    		doneButton.setBorderPainted(false);
    	    doneButton.setContentAreaFilled(false);
    	    doneButton.setFocusPainted(false);
-   		doneButton.setBounds(800, 930, 150, 40); // Position as neededs
+   		doneButton.setBounds(775, 575, 200, 48); // Position as neededs
    		doneButton.addActionListener(e -> {
    			game.getScore();
    			orderScreen.onShow();
@@ -206,24 +203,12 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	}
 	
 	public int getScore() {
-<<<<<<< HEAD
-	//hi
-
-		
-//		if(cutsDone != numCutsNeeded) {
-//			points -= (Math.abs(cutsDone - numCutsNeeded));
-//		}
-//		return 100;
-		return (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
-
-=======
 		int score;
 		score = (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
 		if (score < 0) {
 	    	return 0;
 	    }
 		return score;
->>>>>>> branch 'master' of https://github.com/Kyledxon/CSAfnl.git
 	}
 	
 }
