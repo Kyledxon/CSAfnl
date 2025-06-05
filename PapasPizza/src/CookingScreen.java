@@ -17,7 +17,7 @@ public class CookingScreen extends GameScreen {
 	private Timer stopwatchTimer;
 	private long elapsedMillis = 0;     // Tracks total elapsed time
 	private long lastStartTime = 0;     // Time when the stopwatch last resumed
-	private int seconds;
+	private int seconds = 0;
 	private JLabel timeLabel = new JLabel(); // Label reused across screen shows
 	private customer cust = OrderScreen.getRandCust();
 	

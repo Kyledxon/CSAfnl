@@ -2,7 +2,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Toppings {
-	
+	private int correctUnits;
+	private int penaltyUnits;
+	private int totalRequiredUnits;
+	private static int score;
 	private HashMap<String, Integer> toppingsList = new HashMap<>();
 	private HashMap<String, Integer> checkerList = new HashMap<>();
 	private customer theCust = OrderScreen.getRandCust();
@@ -43,7 +46,10 @@ public class Toppings {
 		checkerList.forEach((key, value) -> System.out.println(key + " -> " + value));
 		System.out.println(checkList());
 	}
-	
+	public static int getTheScore() {
+		return score;
+	}
+	//
 	public int checkList() {
 	    HashMap<String, Integer> requiredMap = new HashMap<>();
 	    for (String name : theCust.selectedToppings) {
@@ -57,10 +63,10 @@ public class Toppings {
 
 	        requiredMap.put(topping, quantity);
 	    }
-
-	    int correctUnits = 0;
-	    int penaltyUnits = 0;
-	    int totalRequiredUnits = 0;
+//
+	    correctUnits = 0;
+	    penaltyUnits = 0;
+	    totalRequiredUnits = 0;
 
 	    // Count correct and penalty units
 	    for (String topping : requiredMap.keySet()) {
@@ -86,7 +92,7 @@ public class Toppings {
 	    if (totalRequiredUnits == 0) {
 	    	return 0;
 	    }
-	    int score = (int)(100.0 * correctUnits / totalRequiredUnits) - 10*penaltyUnits;
+	    score = (int)(100.0 * correctUnits / totalRequiredUnits) - 10*penaltyUnits;
 	    if (score < 0) {
 	    	return 0;
 	    }

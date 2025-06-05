@@ -26,14 +26,19 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private int numCutsNeeded;
 	private int cutsDone;
 	private int numBadCuts;
+
 	private int points = 100;
+	private Game game;
+	
+
    public CuttingScreen() {
   
    }
-   public CuttingScreen(CardLayout cardLayout, JPanel cards, GameScreen orderScreen) {
+   public CuttingScreen(CardLayout cardLayout, JPanel cards, GameScreen orderScreen, Game game) {
        this.cardLayout = cardLayout;
        this.cards = cards;
        this.orderScreen = orderScreen;
+       this.game = game;
    }
 	 	
 	    int deltaX;
@@ -76,6 +81,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    		doneButton = new JButton("Done Cutting");
    		doneButton.setBounds(800, 30, 150, 40); // Position as neededs
    		doneButton.addActionListener(e -> {
+   			game.getScore();
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
    		});
@@ -196,12 +202,14 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	
 	public int getScore() {
 	//hi
+
 		
-		return (100 - 10*(Math.abs(cust.getNumCuts() - cutsDone)) - 10*(numBadCuts));
 //		if(cutsDone != numCutsNeeded) {
 //			points -= (Math.abs(cutsDone - numCutsNeeded));
 //		}
 //		return 100;
+		return (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
+
 	}
 	
 }

@@ -57,6 +57,11 @@ public class OrderScreen extends GameScreen {
         ImageIcon pollos = new ImageIcon("images/8-bit pollos.png");
     	Image pollosImage = pollos.getImage();
         sprites.add(new Sprite(0, 0, pollosImage));
+        
+        ImageIcon cash = new ImageIcon("images/real cash.png");
+        Image cashImage = cash.getImage();
+        sprites.add(new Sprite(0, 0, cashImage));
+        
         if (Game.start == 1) {
             // When start changes to 1, reset customer and sprite
             randCust = new customer();
@@ -69,9 +74,9 @@ public class OrderScreen extends GameScreen {
         // After changing sprites, repaint so paintComponent is called
         
         setLayout(null);
-        moneyText.setFont(new Font("Arial", Font.BOLD, 100));
+        moneyText.setFont(new Font("Arial", Font.BOLD, 70));
         moneyText.setForeground(Color.WHITE);
-        moneyText.setBounds(50, 10, 500, 100);
+        moneyText.setBounds(180, 40, 500, 100);
         moneyText.setText(String.valueOf(Game.money));
         add(moneyText);
         

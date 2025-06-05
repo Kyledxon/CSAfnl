@@ -40,7 +40,8 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private CookingScreen cookingScreen;
 	private CuttingScreen cuttingScreen;
 	private GameScreen currentScreen;
-	public static int money = 10000;
+	public static int money = 0;
+	private boolean hasPlayed = false;
 	
 	
 	ArrayList<customer> Customers = new ArrayList<customer>();
@@ -65,7 +66,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 		orderScreen = new OrderScreen();
 	   toppingsScreen = new ToppingScreen();
 	   cookingScreen = new CookingScreen();
-	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen); // new
+	   cuttingScreen = new CuttingScreen(cardLayout, cards, orderScreen, this); // new
 	   // Add the screens to the container with names
 	   cards.add(orderScreen, "Order Screen");
 	   cards.add(toppingsScreen, "Toppings Screen");
@@ -157,7 +158,19 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	}
 	
 	public int getScore() {
-		return (cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
+		int score = (Toppings.getTheScore() + cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
+		System.out.println(Toppings.getTheScore());
+		System.out.println(cookingScreen.getScore());
+		System.out.println(cuttingScreen.getScore());
+		money += score*10;
+	
+		if (!hasPlayed) {
+	        SimpleAudioPlayer cashSound = new SimpleAudioPlayer("cash sounds.wav", true);
+	        hasPlayed = false;
+	    }
+
+	    return score;
+		
 	}
 	
 	private ImageIcon createCircularIcon(String imagePath) {
