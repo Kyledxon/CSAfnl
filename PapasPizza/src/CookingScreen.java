@@ -20,7 +20,7 @@ public class CookingScreen extends GameScreen {
 	private int seconds = 0;
 	private JLabel timeLabel = new JLabel(); // Label reused across screen shows
 	private customer cust = OrderScreen.getRandCust();
-	
+	public static int it;
     public CookingScreen() {
     	
     }
@@ -74,11 +74,7 @@ public class CookingScreen extends GameScreen {
     }
     
     public int getScore() {
-    	int score;
-    	score = 100-5*(Math.abs(cust.getBakeTime()-seconds));
-		if (score < 0) {
-	    	return 0;
-	    }
-    	return score;
+    	it = 100-5*(Math.abs(cust.getBakeTime()-seconds));
+    	return it;
     }
 }
