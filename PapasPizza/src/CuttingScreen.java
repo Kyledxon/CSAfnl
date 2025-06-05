@@ -26,6 +26,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private int numCutsNeeded;
 	private int cutsDone;
 	private int numBadCuts;
+	private int points = 100;
    public CuttingScreen() {
   
    }
@@ -195,7 +196,12 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	
 	public int getScore() {
 	//hi
+		
 		return (100 - 10*(Math.abs(cust.getNumCuts() - cutsDone)) - 10*(numBadCuts));
+//		if(cutsDone != numCutsNeeded) {
+//			points -= (Math.abs(cutsDone - numCutsNeeded));
+//		}
+//		return 100;
 	}
 	
 }
