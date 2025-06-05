@@ -74,6 +74,11 @@ public class CookingScreen extends GameScreen {
     }
     
     public int getScore() {
-    	return 100-5*(Math.abs(cust.getBakeTime()-seconds));
+    	int score;
+    	score = 100-5*(Math.abs(cust.getBakeTime()-seconds));
+		if (score < 0) {
+	    	return 0;
+	    }
+    	return score;
     }
 }

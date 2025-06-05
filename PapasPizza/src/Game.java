@@ -34,7 +34,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	private CardLayout cardLayout;
 	private JPanel cards; // The container for the screens
 	private int width 	= 1020;
-	private int height 	= 1040;
+	private int height 	= 1120;
 	private OrderScreen orderScreen = new OrderScreen();
 	public static ToppingScreen toppingsScreen = new ToppingScreen();
 	private CookingScreen cookingScreen;
