@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 public class CuttingScreen extends GameScreen implements MouseListener, MouseMotionListener{
-	
+	public static int thescore;
 	private CardLayout cardLayout;
 	private JPanel cards;
 	private GameScreen orderScreen;
@@ -83,7 +83,9 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	    doneButton.setFocusPainted(false);
    		doneButton.setBounds(775, 575, 200, 48); // Position as neededs
    		doneButton.addActionListener(e -> {
+   			OrderScreen.showFinalBox = true;
    			game.getScore();
+   			game.start = 1;
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
    		});
@@ -203,12 +205,11 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	}
 	
 	public int getScore() {
-		int score;
-		score = (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
-		if (score < 0) {
+		thescore = (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
+		if (thescore < 0) {
 	    	return 0;
 	    }
-		return score;
+		return thescore;
 	}
 	
 }
