@@ -78,6 +78,7 @@ public class ToppingScreen extends GameScreen {
         	                draggableSprites.add(clone);
         	                draggingSprite = clone;
         	                toppings.incList(clone.getName());
+        	                toppings.checkList();
         	                toppings.printList();
         	            } else {
         	                // Existing visible sprite
