@@ -78,9 +78,9 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    		doneButton = new JButton("Done Cutting");
    		doneButton.setBounds(800, 30, 150, 40); // Position as neededs
    		doneButton.addActionListener(e -> {
+   			game.getScore();
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
-   			game.getScore();
    		});
    	}
    	add(doneButton);
@@ -199,7 +199,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	
 	public int getScore() {
 	//hi
-		return (100 - 10*(Math.abs(cust.getNumCuts() - cutsDone)) - 10*(numBadCuts));
+		return (100 - 10*(Math.abs(cust.getNumSlices()/2 - cutsDone)) - 10*(numBadCuts));
 	}
 	
 }
