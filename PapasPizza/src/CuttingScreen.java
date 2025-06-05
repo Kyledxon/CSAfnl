@@ -27,6 +27,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 	private int cutsDone;
 	private int numBadCuts;
 	private Game game;
+    private JButton doneButton;
 	
    public CuttingScreen() {
   
@@ -52,7 +53,6 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
 
 	   
 	    private ArrayList<Line2D> cutLines = new ArrayList<>();
-	    private JButton doneButton;
 	   
 	   
    @Override
@@ -75,8 +75,13 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	
    	addMouseListener(this);
    	if (doneButton == null) {
-   		doneButton = new JButton("Done Cutting");
-   		doneButton.setBounds(800, 30, 150, 40); // Position as neededs
+   		ImageIcon gifIcon = new ImageIcon("images/pixil-gif-drawing.gif");
+   		setLayout(null);
+   		doneButton = new JButton(gifIcon);
+   		doneButton.setBorderPainted(false);
+   	    doneButton.setContentAreaFilled(false);
+   	    doneButton.setFocusPainted(false);
+   		doneButton.setBounds(800, 930, 150, 40); // Position as neededs
    		doneButton.addActionListener(e -> {
    			game.getScore();
    			orderScreen.onShow();
@@ -88,7 +93,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    	
    	tip.setFont(new Font("Arial", Font.BOLD, 20));
     tip.setForeground(Color.WHITE);
-    tip.setBounds(800, 30, 200, 50);
+    tip.setBounds(20, 30, 1000, 50);
     add(tip);
     tip.setText(String.format("Make sure to always make cuts horizontal or vertical!"));
    	
