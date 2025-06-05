@@ -157,6 +157,7 @@ public class Game extends JFrame implements MouseListener, ActionListener, KeyLi
 	}
 	
 	public int getScore() {
+		//hi
 		int score = (toppingsScreen.checkList() + cookingScreen.getScore() + cuttingScreen.getScore()) / 3;
 		System.out.println(toppingsScreen.checkList());
 		System.out.println(cookingScreen.getScore());
