@@ -129,7 +129,7 @@ public class OrderScreen extends GameScreen {
         
         if(showFinalBox) {
 	    	g.setColor(Color.white);
-	        g.fillRect(620, 475, 380, 120); // box dimensions
+	        g.fillRect(620, 475, 380, 160); // box dimensions
 
 	        g.setColor(Color.black);
 	        Font theFont1 = new Font("Arial", Font.BOLD, 20);

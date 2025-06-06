@@ -86,6 +86,7 @@ public class CuttingScreen extends GameScreen implements MouseListener, MouseMot
    			OrderScreen.showFinalBox = true;
    			game.getScore();
    			game.start = 1;
+   			System.out.println(Game.getAmt());
    			orderScreen.onShow();
    			cardLayout.show(cards, "Order Screen");
    		});
