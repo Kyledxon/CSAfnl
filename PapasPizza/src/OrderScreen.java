@@ -129,7 +129,7 @@ public class OrderScreen extends GameScreen {
         
         if(showFinalBox) {
 	    	g.setColor(Color.white);
-	        g.fillRect(620, 475, 380, 160); // box dimensions
+	        g.fillRect(620, 75, 380, 160); // box dimensions
 
 	        g.setColor(Color.black);
 	        Font theFont1 = new Font("Arial", Font.BOLD, 20);
@@ -140,7 +140,7 @@ public class OrderScreen extends GameScreen {
 	        int maxWidth1 = 360; // Max width for text inside the box (380 - 20 padding)
 
 	        int x1 = 630;
-	        int y1 = 500;
+	        int y1 = 100;
 	        
 	        g.drawString(String.valueOf(Toppings.getTheScore()), x1, y1);
 	        y1 += lineHeight;
